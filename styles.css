@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+:root {
+  --dark1: #1C1C1A;
+  --dark2: #2B2D2A;
+  --light1: #EDEDE9;
+  --light2: #CFCFC7;
+  --green1: #ABC4A1;
+  --green2: #878E76;
+}
+
+.dark {
+  --dark1: #EDEDE9;
+  --dark2: #CFCFC7;
+  --light1: #1C1C1A;
+  --light2: #2B2D2A;
+  --green1: #878E76;
+  --green2: #ABC4A1;
+}
+
+
+html {
+    background-color: var(--light2);
+}
+
+header {
+    background-color: var(--light1);
+}
+
+#headerLinks {
+    color: var(--dark2)
+}
+
+#profileIcon {
+    background-color: var(--light1);
+}
+
+.exo-2-bold {
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+footer {
+    background-color: var(--green2);
+}
+
+#footerTitle {
+    color: var(--light1)
+}
