@@ -252,9 +252,6 @@
   .overflow-y-auto {
     overflow-y: auto;
   }
-  .rounded {
-    border-radius: 0.25rem;
-  }
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
@@ -271,17 +268,11 @@
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
-  }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
-  }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -366,7 +357,7 @@
   --dark2: #2B2D2A;
   --light1: #EDEDE9;
   --light2: #CFCFC7;
-  --green1: #ABC4A1;
+  --green1: #5A5F48;
   --green2: #878E76;
 }
 .dark {
@@ -375,7 +366,7 @@
   --light1: #1C1C1A;
   --light2: #2B2D2A;
   --green1: #878E76;
-  --green2: #ABC4A1;
+  --green2: #5A5F48;
 }
 html {
   background-color: var(--light2);
