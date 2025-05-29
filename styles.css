@@ -31,6 +31,10 @@ header {
     color: var(--dark2)
 }
 
+#headerLinks li:first-child {
+  color: var(--green2)
+}
+
 #profileIcon {
     background-color: var(--light1);
 }
@@ -39,6 +43,25 @@ header {
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
+  font-style: normal;
+}
+
+.fustat-normal {
+  font-family: "Fustat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kdam-thmor-pro-regular {
+  font-family: "Kdam Thmor Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jersey-25-regular {
+  font-family: "Jersey 25", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 

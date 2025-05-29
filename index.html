@@ -6,10 +6,9 @@
   x-bind:class="{ 'dark': darkMode }"
 >
 
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="styles.css" rel="stylesheet" />
   <link href="tailwind.css" rel="stylesheet" />
 
@@ -29,6 +28,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- fustat font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap" rel="stylesheet">
+
+  <!-- kdam thmor pro font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+
+  <!-- jersy 25 font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -37,14 +51,14 @@
     <nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between gap-4 px-6 py-4" aria-label="penguin ui menu">
       <div class="flex items-center gap-4">
         <!-- desktop menu -->
-        <ul class="hidden items-center gap-4 shrink-0 sm:flex exo-2-bold" id="headerLinks">
-          <li><a href="index.html" class="font-bold text-dark2">home</a></li>
-          <li class="font-bold text-dark2">|</li>
-          <li><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="font-bold text-dark2">project portfolio</a></li>
-          <li class="font-bold text-dark2">|</li>
-          <li><a href="https://www.linkedin.com/in/imogen-dicen/" class="font-bold text-dark2">linkedin</a></li>
-          <li class="font-bold text-dark2">|</li>
-          <li><a href="https://github.com/mars-rei" class="font-bold text-dark2">github</a></li>
+        <ul class="hidden items-center gap-4 shrink-0 sm:flex exo-2-bold text-3xl" id="headerLinks">
+          <li><a href="index.html" class="text-green2">home</a></li>
+          <li class="text-dark2">|</li>
+          <li><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="text-dark2">project portfolio</a></li>
+          <li class="text-dark2">|</li>
+          <li><a href="https://www.linkedin.com/in/imogen-dicen/" class="text-dark2">linkedin</a></li>
+          <li class="text-dark2">|</li>
+          <li><a href="https://github.com/mars-rei" class="text-dark2">github</a></li>
         </ul>
 
         <!-- mobile menu button -->
@@ -59,15 +73,15 @@
 
         <!-- mobile menu -->
         <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col rounded-b-radius border-b border-outline bg-surface-alt px-8 pb-6 pt-10 dark:border-outline-dark dark:bg-surface-dark-alt sm:hidden">
-          <li class="p-2"><a href="#" class="w-full text-lg font-bold text-black focus:underline dark:text-lime-800" aria-current="page">home</a></li>
-          <li class="p-2"><a href="#" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">project portfolio</a></li>
-          <li class="p-2"><a href="#" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">linkedin</a></li>
-          <li class="p-2"><a href="#" class="w-full text-lg font-medium text-neutral-600 focus:underline dark:text-neutral-300">github</a></li>
+          <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline " aria-current="page">home</a></li>
+          <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline ">project portfolio</a></li>
+          <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline ">linkedin</a></li>
+          <li class="p-2"><a href="https://github.com/mars-rei" class="w-full text-lg font-medium focus:underline ">github</a></li>
         </ul>
       </div>
 
       <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col gap-1 text-on-surface dark:text-on-surface-dark">
+      <div class="relative w-full max-w-64 flex flex-col gap-1">
         <input x-model="search" placeholder="search">
       </div>
     </nav>
@@ -95,28 +109,28 @@
       }, 1000);
     }">
       <template x-if="remainingTime > 0">
-        <div>
+        <div class="columns-4">
           <div>
-            <div>days</div>
-            <div
+            <div class="jersey-25-regular text-4xl">days</div>
+            <div class="kdam-thmor-pro-regular text-7xl"
               x-text="formatTime(remainingTime).days">
             </div>
           </div>
           <div>
-            <div>hours</div>
-            <div
+            <div class="jersey-25-regular text-4xl">hours</div>
+            <div class="kdam-thmor-pro-regular text-7xl"
               x-text="formatTime(remainingTime).hours">
             </div>
           </div>
           <div>
-            <div>minutes</div>
-            <div
+            <div class="jersey-25-regular text-4xl">minutes</div>
+            <div class="kdam-thmor-pro-regular text-7xl"
               x-text="formatTime(remainingTime).minutes">
             </div>
           </div>
           <div>
-            <div>seconds</div>
-            <div
+            <div class="jersey-25-regular text-4xl">seconds</div>
+            <div class="kdam-thmor-pro-regular text-7xl"
               x-text="formatTime(remainingTime).seconds">
             </div>
           </div>
@@ -124,17 +138,18 @@
       </template>
       <template x-if="remainingTime <= 0">
         <div>
-          <div>the summer of '25 has come to an end.</div>
+          <div class="exo-2-bold text-6xl">the summer of '25 has come to an end.</div>
         </div>
       </template>
-    </div>
-
-    <div>
-      'TIL FINAL YEAR OF UNI
+      <div>
+        <p class="jersey-25-regular text-4xl">'TIL FINAL YEAR OF UNI</p>
+      </div>
     </div>
   </div>
 
   <!-- main body of home page-->
+
+  <!-- profile icon -->
   <div>
     <div class="relative w-fit">
       <div class="p-2 rounded-full" id="profileIcon">
@@ -143,24 +158,82 @@
     </div>
   </div>
 
+  <!-- divider with links -->
+  <div>
+    <ul class="hidden items-center gap-4 shrink-0 sm:flex exo-2-bold text-2xl">
+      <li>POSTS</li>
+      <li>ART</li>
+      <li>BACKEND</li>
+      <li>FRONTEND</li>
+      <li>LANGUAGES</li>
+      <li>LINKEDIN</li>
+      <li>PORTFOLIO</li>
+      <li>RESEARCH</li>
+    </ul>
+  </div>
+
+  <!-- left side -->
+  <p class="exo-2-bold text-4xl">MARSY'S SUMMER OF '25</p>
+  <p class="fustat-normal">@imogen.dicen </p>
+  <p class="fustat-normal">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
+
+  <!-- checklist -->
+  <div>
+    <p class="exo-2-bold text-2xl">summer checklist</p>
+    <ul class="items-left shrink-0 sm:flex fustat-normal text-1xl flex flex-col">
+      <li>create a notion project portfolio</li>
+      <li>update linkedin profile</li>
+      <li>finish creating spotify dupe of a portfolio </li>
+      <li>create a blog site for this summer </li>
+      <li>start creating a site scrapbook with friends</li>
+      <li>be able to write and read all hiragana characters</li>
+      <li>regain gcse and improve french proficiency</li>
+      <li>regain gcse and improve german proficiency</li>
+      <li>create new and improved compclub hub</li>
+      <li>gain 2 industry recognised certifications on datacamp</li>
+      <li>regain and improve javascript knowledge with freecodecamp</li>
+      <li>research for final year project (document databases / natural language processing)</li>
+    </ul> 
+  </div>
+
+  <!-- tags -->
+  <div>
+    art 
+    backend 
+    frontend 
+    languages 
+    linkedin 
+    portfolio 
+    research
+  </div>
+
+  <!-- right side -->
+  <div>
+    <p class="exo-2-bold text-2xl">latest blog post</p>
+    <div>
+      *insert photo
+    </div>
+    <div>
+      <p class="exo-2-bold text-lg">may 24</p>
+      <p class="fustat-normal text-1xl">started off summer by opening up my sketchbook</p>
+      <p class="fustat-normal text-1xl">art</p>
+    </div>
+  </div>
   
-
-  
-
-
+  <!-- footer -->
   <footer class="mt-auto">
     <div class="flex items-center justify-between gap-4 px-8 py-6" >
       <div class="flex items-center gap-4">
-        <h3 class="exo-2-bold text-4xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+        <h3 class="exo-2-bold text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
       </div>
       <div class="relative flex flex-col gap-1">
-        <button @click="darkMode = !darkMode">
+        <button @click="darkMode = !darkMode" class="text-1xl fustat-normal">
           toggle theme
         </button>
       </div>
     </div>
     <hr>
-    <p>© 2025 Imogen Dicen. All rights reserved.    •    Built with Tailwind, and Alpine.js.    •    Last updated May 27 ‘25.</p>
+    <p class="text-1xl fustat-normal">© 2025 Imogen Dicen. All rights reserved.    •    Built with Tailwind, and Alpine.js.    •    Last updated May 27 ‘25.</p>
   </footer>
 
 </body>
