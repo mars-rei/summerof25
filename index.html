@@ -88,7 +88,7 @@
   </header>
 
 
-  <div>
+  <div class="px-4">
     <div
       x-data="{
       endDate: new Date('2025-09-21T23:59:59').getTime(),
@@ -150,7 +150,7 @@
   <!-- main body of home page-->
 
   <!-- profile icon -->
-  <div>
+  <div class="px-4">
     <div class="relative w-fit">
       <div class="p-2 rounded-full" id="profileIcon">
           <img class="max-w-64 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
@@ -159,7 +159,7 @@
   </div>
 
   <!-- divider with links -->
-  <div>
+  <div class="px-4">
     <ul class="hidden items-center gap-4 shrink-0 sm:flex exo-2-bold text-2xl">
       <li>POSTS</li>
       <li>ART</li>
@@ -172,51 +172,60 @@
     </ul>
   </div>
 
-  <!-- left side -->
-  <p class="exo-2-bold text-4xl">MARSY'S SUMMER OF '25</p>
-  <p class="fustat-normal">@imogen.dicen </p>
-  <p class="fustat-normal">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
+  <div class="grid grid-cols-4 grid-rows-1">
+    <div class="col-span-1 px-4">
+      <!-- left side -->
+      <p class="exo-2-bold text-4xl">MARSY'S SUMMER OF '25</p>
+      <p class="fustat-normal">@imogen.dicen </p>
+      <p class="fustat-normal">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
 
-  <!-- checklist -->
-  <div>
-    <p class="exo-2-bold text-2xl">summer checklist</p>
-    <ul class="items-left shrink-0 sm:flex fustat-normal text-1xl flex flex-col">
-      <li>create a notion project portfolio</li>
-      <li>update linkedin profile</li>
-      <li>finish creating spotify dupe of a portfolio </li>
-      <li>create a blog site for this summer </li>
-      <li>start creating a site scrapbook with friends</li>
-      <li>be able to write and read all hiragana characters</li>
-      <li>regain gcse and improve french proficiency</li>
-      <li>regain gcse and improve german proficiency</li>
-      <li>create new and improved compclub hub</li>
-      <li>gain 2 industry recognised certifications on datacamp</li>
-      <li>regain and improve javascript knowledge with freecodecamp</li>
-      <li>research for final year project (document databases / natural language processing)</li>
-    </ul> 
-  </div>
-
-  <!-- tags -->
-  <div>
-    art 
-    backend 
-    frontend 
-    languages 
-    linkedin 
-    portfolio 
-    research
-  </div>
-
-  <!-- right side -->
-  <div>
-    <p class="exo-2-bold text-2xl">latest blog post</p>
-    <div>
-      *insert photo
+      <!-- checklist -->
+      <div>
+        <p class="exo-2-bold text-2xl">summer checklist</p>
+        <ul class="items-left shrink-0 sm:flex fustat-normal text-1xl flex flex-col">
+          <li>create a notion project portfolio</li>
+          <li>update linkedin profile</li>
+          <li>finish creating spotify dupe of a portfolio </li>
+          <li>create a blog site for this summer </li>
+          <li>start creating a site scrapbook with friends</li>
+          <li>be able to write and read all hiragana characters</li>
+          <li>regain gcse and improve french proficiency</li>
+          <li>regain gcse and improve german proficiency</li>
+          <li>create new and improved compclub hub</li>
+          <li>gain 2 industry recognised certifications on datacamp</li>
+          <li>regain and improve javascript knowledge with freecodecamp</li>
+          <li>research for final year project (document databases / natural language processing)</li>
+        </ul> 
+      </div>
+    
+      <!-- tags -->
+      <div>
+        <p class="exo-2-bold text-2xl">tags</p>
+        <ul class="items-left shrink-0 sm:flex fustat-normal text-1xl flex gap-4">
+          <li>art</li>
+          <li>backend</li>
+          <li>frontend</li>
+          <li>languages</li>
+          <li>linkedin</li>
+          <li>portfolio</li>
+          <li>research</li>
+        </ul>    
+      </div>
     </div>
-    <div>
-      <p class="exo-2-bold text-lg">may 24</p>
-      <p class="fustat-normal text-1xl">started off summer by opening up my sketchbook</p>
-      <p class="fustat-normal text-1xl">art</p>
+
+    <div class="col-span-3 px-4">
+      <!-- right side -->
+      <div>
+        <p class="exo-2-bold text-2xl">latest blog post</p>
+        <div>
+          *insert photo
+        </div>
+        <div>
+          <p class="exo-2-bold text-lg">may 24</p>
+          <p class="fustat-normal text-1xl">started off summer by opening up my sketchbook</p>
+          <p class="fustat-normal text-1xl">art</p>
+        </div>
+      </div>
     </div>
   </div>
   
@@ -233,7 +242,7 @@
       </div>
     </div>
     <hr>
-    <p class="text-1xl fustat-normal">© 2025 Imogen Dicen. All rights reserved.    •    Built with Tailwind, and Alpine.js.    •    Last updated May 27 ‘25.</p>
+    <p class="text-1xl fustat-normal flex justify-center">© 2025 Imogen Dicen. All rights reserved.    •    Built with Tailwind, and Alpine.js.    •    Last updated May 27 ‘25.</p>
   </footer>
 
 </body>
