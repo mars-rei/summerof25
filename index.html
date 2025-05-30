@@ -2,7 +2,11 @@
   
 <html>
 
-<head>
+<head   
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/main.css" rel="stylesheet" />
@@ -40,18 +44,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gray-700 flex flex-col min-h-screen"
-  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
-  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
-  x-bind:class="{ 'dark': darkMode }"
->
+<body class="bg-[--light2] flex flex-col min-h-screen">
 
-  <header class="bg-gray-400">
+  <header class="bg-[--light1]">
     <nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between gap-4 px-6 py-4" aria-label="penguin ui menu">
       <div class="flex items-center gap-4">
         <!-- desktop menu -->
-        <ul class="text-gray-600 hidden items-center gap-4 shrink-0 sm:flex exo text-3xl" id="headerLinks">
-          <li class="text-gray-500"><a href="index.html">home</a></li>
+        <ul class="text-[--dark2] hidden items-center gap-4 shrink-0 sm:flex exo text-3xl" id="headerLinks">
+          <li class="text-[--green2]"><a href="index.html">home</a></li>
           <li>|</li>
           <li><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4">project portfolio</a></li>
           <li>|</li>
@@ -80,8 +80,8 @@
       </div>
 
       <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-gray-700 rounded-full">
-        <input x-model="search" placeholder="search" class="placeholder-gray-700 ml-5 focus:outline-none">
+      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
+        <input x-model="search" placeholder="search" class="placeholder-[--green2] ml-5 focus:outline-none">
       </div>
     </nav>
   </header>
@@ -111,38 +111,38 @@
         <div>
           <div class="flex flex-row items-center gap-10">
             <div>
-              <div class="jersey text-4xl mb-5">days</div>
-              <div class="ktp text-7xl"
+              <div class="jersey text-4xl mb-5 text-[--green2]">days</div>
+              <div class="ktp text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).days">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5">hours</div>
-              <div class="ktp text-7xl"
+              <div class="jersey text-4xl mb-5 text-[--green2]">hours</div>
+              <div class="ktp text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).hours">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5">minutes</div>
-              <div class="ktp text-7xl"
+              <div class="jersey text-4xl mb-5 text-[--green2]">minutes</div>
+              <div class="ktp text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).minutes">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5">seconds</div>
-              <div class="ktp text-7xl"
+              <div class="jersey text-4xl mb-5 text-[--green2]">seconds</div>
+              <div class="ktp text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).seconds">
               </div>
             </div>
           </div>
           <div>
-            <p class="jersey text-4xl mt-10 -mb-16">'TIL FINAL YEAR OF UNI</p>
+            <p class="text-[--dark2] jersey text-4xl mt-10 -mb-16">'TIL FINAL YEAR OF UNI</p>
           </div>
         </div>
       </template>
       <template x-if="remainingTime <= 0">
         <div>
-          <div class="exo text-6xl mb-16 mt-10">the summer of '25 has come to an end.</div>
+          <div class="exo text-6xl mb-16 mt-10 text-[--dark1]">the summer of '25 has come to an end.</div>
         </div>
       </template>
     </div>
@@ -154,15 +154,15 @@
     <!-- profile icon -->
     <div class="px-4">
       <div class="relative w-fit">
-        <div class="-mb-50 p-2 rounded-full bg-gray-400" id="profileIcon">
+        <div class="-mb-50 p-2 rounded-full bg-[--light1]" id="profileIcon">
             <img class="max-w-80 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
         </div>
       </div>
     </div>
 
     <!-- divider with links -->
-    <div class="bg-gray-400 py-4">
-      <ul class="items-center flex exo text-2xl gap-8 ml-80 justify-center">
+    <div class="bg-[--light1] py-4">
+      <ul class="text-[--green1] items-center flex exo text-2xl gap-8 ml-80 justify-center">
         <li><a href="#">POSTS</a></li>
         <li><a href="#">ART</a></li>
         <li><a href="#">BACKEND</a></li>
@@ -179,72 +179,72 @@
     <div class="col-span-1 px-4">
       <div class="ml-2 my-10 mt-44">
         <!-- left side -->
-        <p class="exo text-4xl text-gray-300 my-4">MARSY'S SUMMER OF '25</p>
-        <p class="fustat text-gray-400 my-4">@imogen.dicen </p>
-        <p class="fustat text-gray-300 my-4">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
+        <p class="exo text-4xl text-[--dark1] my-4">MARSY'S SUMMER OF '25</p>
+        <p class="fustat text-[--green2] my-4">@imogen.dicen </p>
+        <p class="fustat text-[--dark2] my-4">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
       </div>
       
       <!-- checklist -->
-      <div class="my-4 txt-gray-800 bg-gray-300 rounded-xl p-4">
-        <p class="exo text-2xl text-gray-800 mb-2">summer checklist</p>
-        <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
+      <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+        <p class="exo text-2xl text-[--dark1] mb-2">summer checklist</p>
+        <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md">✔</span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
             <span class="flex">create a notion project portfolio</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">update linkedin profile</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">finish creating spotify dupe of a portfolio</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">create a blog site for this summer</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">start creating a site scrapbook with friends</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">be able to write and read all hiragana characters</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">regain gcse and improve french proficiency</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">regain gcse and improve german proficiency</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">create new and improved compclub hub</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">gain 2 industry recognised certifications on datacamp</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">regain and improve javascript knowledge with freecodecamp</span>
           </li>
-          <hr class="border-gray-400 ml-8">
+          <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-gray-600 text-gray-600 rounded-md"></span>
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
             <span class="flex">research for final year project (document databases / natural language processing)</span>
           </li>
         </ul> 
@@ -252,32 +252,32 @@
     
       <!-- tags -->
       <div class="my-4 ml-4">
-        <p class="exo text-2xl text-gray-300 my-4">tags</p>
-        <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 txt-gray-800 rounded-lg">
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">art</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">backend</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">frontend</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">languages</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">linkedin</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">portfolio</p></li>
-          <li><p class="bg-gray-300 rounded-full px-4 py-1">research</p></li>
+        <p class="exo text-2xl text-[--dark1] my-4">tags</p>
+        <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">art</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">backend</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">frontend</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">languages</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">linkedin</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">portfolio</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">research</p></li>
         </ul>    
       </div>
     </div>
 
     <div class="col-span-3 ml-10 mr-5 mt-5">
       <!-- right side -->
-      <div class="bg-gray-300 rounded-lg p-4">
-        <p class="exo text-2xl text-gray-800 mb-2">latest blog post</p>
+      <div class="bg-[--light1] rounded-lg p-4">
+        <p class="exo text-2xl text-[--dark1] mb-2">latest blog post</p>
 
         <div class="grid grid-cols-5 grid-rows-1 mt-5 gap-5">
           <div class="col-span-1">
-            <div class="h-48 w-48 bg-gray-800 flex rounded-lg"></div>
+            <div class="h-48 w-48 bg-[--green2] flex rounded-lg"></div>
           </div>
           <div class="col-span-4">
-            <p class="exo text-lg">may 24</p>
-            <p class="fustat text-1xl">started off summer by opening up my sketchbook</p>
-            <p class="mt-3 bg-gray-700 text-gray-300 rounded-full px-4 py-1 text-1xl w-fit">art</p>
+            <p class="exo text-lg text-[--dark1]">may 24</p>
+            <p class="fustat text-1xl text-[--dark2]">started off summer by opening up my sketchbook</p>
+            <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
           </div>
         </div>
       </div>
@@ -285,19 +285,19 @@
   </div>
   
   <!-- footer -->
-  <footer class="mt-10 bg-gray-800">
+  <footer class="mt-10 bg-[--green2]">
     <div class="flex items-center justify-between m-5" >
       <div class="flex items-center gap-4">
-        <h3 class="exo text-gray-400 text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+        <h3 class="exo text-[--light1] text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
       </div>
       <div class="relative flex flex-col">
-        <button @click="darkMode = !darkMode" class="text-1xl fustat bg-gray-400 txt-gray-800 p-2 pr-5 pl-5 rounded-lg">
+        <button @click="darkMode = !darkMode" class="text-1xl fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
           toggle theme
         </button>
       </div>
     </div>
-    <hr class="border-gray-400 mr-5 ml-5">
-    <div class="gap-5 text-1xl fustat flex justify-center text-gray-400 p-5">
+    <hr class="border-[--light2] mr-5 ml-5">
+    <div class="gap-5 text-1xl fustat flex justify-center text-[--light1] p-5">
       <p>© 2025 Imogen Dicen. All rights reserved.</p>
       <p>•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
