@@ -1,9 +1,7 @@
 <!doctype html>
   
-<html>
-
-<head   
-  x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
+<html
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
   x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
   x-bind:class="{ 'dark': darkMode }"
 >
@@ -11,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/main.css" rel="stylesheet" />
 
-  <!-- to remove later on (toggle button only works when this is here fsr)-->
   <!-- tailwind core -->
   <script src="https://cdn.tailwindcss.com"></script>
 

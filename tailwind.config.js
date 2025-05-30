@@ -3,7 +3,6 @@ module.exports = {
     './index.html',
     './testing.html',
     './css/main.css',
-    './src/input.css',
   ], 
   theme: {
     extend: {
