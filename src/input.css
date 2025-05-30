@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* colours */
 :root {
   --dark1: #1C1C1A;
   --dark2: #2B2D2A;
