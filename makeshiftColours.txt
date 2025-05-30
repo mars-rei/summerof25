@@ -1,5 +1,0 @@
-dark1: bg-gray-700
-dark2: bg-gray-400
-light: text-gray-600
-green1: text-gray-800
-green2: text-gray-500

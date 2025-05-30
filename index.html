@@ -80,14 +80,14 @@
       </div>
 
       <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col gap-1 fustat">
-        <input x-model="search" placeholder="search">
+      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-gray-700 rounded-full">
+        <input x-model="search" placeholder="search" class="placeholder-gray-700 ml-5 focus:outline-none">
       </div>
     </nav>
   </header>
 
 
-  <div class="px-4">
+  <div class="px-4 mt-16 mx-10 flex justify-center">
     <div
       x-data="{
       endDate: new Date('2025-09-21T23:59:59').getTime(),
@@ -106,43 +106,45 @@
         const remainingTime = endDate - now;
         $data.remainingTime = remainingTime > 0 ? remainingTime : 0;
       }, 1000);
-    }">
+    }" class="text-center">
       <template x-if="remainingTime > 0">
-        <div class="columns-4">
-          <div>
-            <div class="jersey text-4xl">days</div>
-            <div class="ktp text-7xl"
-              x-text="formatTime(remainingTime).days">
+        <div>
+          <div class="flex flex-row items-center gap-10">
+            <div>
+              <div class="jersey text-4xl mb-5">days</div>
+              <div class="ktp text-7xl"
+                x-text="formatTime(remainingTime).days">
+              </div>
+            </div>
+            <div>
+              <div class="jersey text-4xl mb-5">hours</div>
+              <div class="ktp text-7xl"
+                x-text="formatTime(remainingTime).hours">
+              </div>
+            </div>
+            <div>
+              <div class="jersey text-4xl mb-5">minutes</div>
+              <div class="ktp text-7xl"
+                x-text="formatTime(remainingTime).minutes">
+              </div>
+            </div>
+            <div>
+              <div class="jersey text-4xl mb-5">seconds</div>
+              <div class="ktp text-7xl"
+                x-text="formatTime(remainingTime).seconds">
+              </div>
             </div>
           </div>
           <div>
-            <div class="jersey text-4xl">hours</div>
-            <div class="ktp text-7xl"
-              x-text="formatTime(remainingTime).hours">
-            </div>
-          </div>
-          <div>
-            <div class="jersey text-4xl">minutes</div>
-            <div class="ktp text-7xl"
-              x-text="formatTime(remainingTime).minutes">
-            </div>
-          </div>
-          <div>
-            <div class="jersey text-4xl">seconds</div>
-            <div class="ktp text-7xl"
-              x-text="formatTime(remainingTime).seconds">
-            </div>
+            <p class="jersey text-4xl mt-10 -mb-16">'TIL FINAL YEAR OF UNI</p>
           </div>
         </div>
       </template>
       <template x-if="remainingTime <= 0">
         <div>
-          <div class="exo text-6xl">the summer of '25 has come to an end.</div>
+          <div class="exo text-6xl mb-16 mt-10">the summer of '25 has come to an end.</div>
         </div>
       </template>
-      <div>
-        <p class="jersey text-4xl">'TIL FINAL YEAR OF UNI</p>
-      </div>
     </div>
   </div>
 
