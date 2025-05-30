@@ -148,36 +148,40 @@
 
   <!-- main body of home page-->
 
-  <!-- profile icon -->
-  <div class="px-4">
-    <div class="relative w-fit">
-      <div class="p-2 rounded-full" id="profileIcon">
-          <img class="max-w-64 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
+  <div>
+    <!-- profile icon -->
+    <div class="px-4">
+      <div class="relative w-fit">
+        <div class="-mb-50 p-2 rounded-full bg-gray-400" id="profileIcon">
+            <img class="max-w-80 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- divider with links -->
-  <div class="px-4">
-    <ul class="hidden items-center gap-4 shrink-0 sm:flex exo text-2xl">
-      <li>POSTS</li>
-      <li>ART</li>
-      <li>BACKEND</li>
-      <li>FRONTEND</li>
-      <li>LANGUAGES</li>
-      <li>LINKEDIN</li>
-      <li>PORTFOLIO</li>
-      <li>RESEARCH</li>
-    </ul>
+    <!-- divider with links -->
+    <div class="bg-gray-400 py-4">
+      <ul class="items-center flex exo text-2xl gap-8 ml-80 justify-center">
+        <li><a href="#">POSTS</a></li>
+        <li><a href="#">ART</a></li>
+        <li><a href="#">BACKEND</a></li>
+        <li><a href="#">FRONTEND</a></li>
+        <li><a href="#">LANGUAGES</a></li>
+        <li><a href="#">LINKEDIN</a></li>
+        <li><a href="#">PORTFOLIO</a></li>
+        <li><a href="#">RESEARCH</a></li>
+      </ul>
+    </div>
   </div>
 
   <div class="grid grid-cols-4 grid-rows-1">
     <div class="col-span-1 px-4">
-      <!-- left side -->
-      <p class="exo text-4xl">MARSY'S SUMMER OF '25</p>
-      <p class="fustat">@imogen.dicen </p>
-      <p class="fustat">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
-
+      <div class="ml-2 my-10 mt-44">
+        <!-- left side -->
+        <p class="exo text-4xl text-gray-300 my-4">MARSY'S SUMMER OF '25</p>
+        <p class="fustat text-gray-400 my-4">@imogen.dicen </p>
+        <p class="fustat text-gray-300 my-4">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
+      </div>
+      
       <!-- checklist -->
       <div class="my-4 txt-gray-800 bg-gray-300 rounded-xl p-4">
         <p class="exo text-2xl text-gray-800 mb-2">summer checklist</p>
@@ -245,7 +249,7 @@
       </div>
     
       <!-- tags -->
-      <div class="my-4">
+      <div class="my-4 ml-4">
         <p class="exo text-2xl text-gray-300 my-4">tags</p>
         <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 txt-gray-800 rounded-lg">
           <li><p class="bg-gray-300 rounded-full px-4 py-1">art</p></li>
@@ -259,17 +263,20 @@
       </div>
     </div>
 
-    <div class="col-span-3 px-4">
+    <div class="col-span-3 ml-10 mr-5 mt-5">
       <!-- right side -->
-      <div>
-        <p class="exo text-2xl">latest blog post</p>
-        <div>
-          *insert photo
-        </div>
-        <div>
-          <p class="exo text-lg">may 24</p>
-          <p class="fustat text-1xl">started off summer by opening up my sketchbook</p>
-          <p class="fustat text-1xl">art</p>
+      <div class="bg-gray-300 rounded-lg p-4">
+        <p class="exo text-2xl text-gray-800 mb-2">latest blog post</p>
+
+        <div class="grid grid-cols-5 grid-rows-1 mt-5 gap-5">
+          <div class="col-span-1">
+            <div class="h-48 w-48 bg-gray-800 flex rounded-lg"></div>
+          </div>
+          <div class="col-span-4">
+            <p class="exo text-lg">may 24</p>
+            <p class="fustat text-1xl">started off summer by opening up my sketchbook</p>
+            <p class="mt-3 bg-gray-700 text-gray-300 rounded-full px-4 py-1 text-1xl w-fit">art</p>
+          </div>
         </div>
       </div>
     </div>
@@ -293,7 +300,7 @@
       <p>•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
       <p>•</p>
-      <p>Last updated May 27 ‘25.</p>
+      <p>Last updated May 30 ‘25.</p>
     </div>
   </footer>
 
