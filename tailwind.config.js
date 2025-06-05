@@ -9,6 +9,7 @@ module.exports = {
     './0530.html',
     './0531.html',
     './0603.html',
+    './0604.html',
   ], 
   theme: {
     extend: {
