@@ -61,17 +61,17 @@
 
         <!-- mobile menu button -->
         <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen" x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button" class="flex sm:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
-          <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
-          <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+          <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
         </button>
 
         <!-- mobile menu -->
-        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col rounded-b-radius border-b border-outline px-8 pb-6 pt-10 sm:hidden">
-          <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline" aria-current="page">home</a></li>
+        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] sm:hidden bg-[--light1]">
+          <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline text-[--green1]" aria-current="page">home</a></li>
           <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline">project portfolio</a></li>
           <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline">linkedin</a></li>
           <li class="p-2"><a href="https://github.com/mars-rei" class="w-full text-lg font-medium focus:underline">github</a></li>
@@ -511,92 +511,90 @@
           by 13.21 i finished all my language dailies.
         </p>
 
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          french: elementary a2 - 1.3 the passé composé: être and avoir
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ils ont regardé la télé et je me suis reposé au lit.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          They watched TV and I rested in bed.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            french: elementary a2 - 1.3 the passé composé: être and avoir
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>french</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Ils ont regardé la télé et je me suis reposé au lit.</i></td>
+              <td>They watched TV and I rested in bed.</td>
+            </tr>
+            <tr>
+              <td><i>Nous nous sommes reposés et elle a lu un livre.</i></td>
+              <td>We rested and she read a book.</td>
+            </tr>
+            <tr>
+              <td><i>Sandra est sortie.</i></td>
+              <td>Sandra went out.</td>
+            </tr>
+            <tr>
+              <td><i>Tu es resté tard au travail?</i></td>
+              <td>Did you stay late at work?</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Nous nous sommes reposés et elle a lu un livre.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          We rested and she read a book.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            german: elementary a2 - 1.3 talking about the past weekend
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>german</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Das Wetter war so gut!</i></td>
+              <td>The weather was so good!</td>
+            </tr>
+            <tr>
+              <td><i>Ich war am Samstag und am Sonntag im Park.</i></td>
+              <td>I was in the park on Saturday and on Sunday.</td>
+            </tr>
+            <tr>
+              <td><i>Ich war zu Hause und hatte online Gitarren-Unterricht.</i></td>
+              <td>I was at home and I had online guitar lessons.</td>
+            </tr>
+            <tr>
+              <td><i>Was hast du am Wochenende gemacht?</i></td>
+              <td>What did you do at the weekend?</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Sandra est sortie.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Sandra went out.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Tu es resté tard au travail?
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Did you stay late at work?
-        </p>
-
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          german: elementary a2 - 1.3 talking about the past weekend
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Das Wetter war so gut!
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          The weather was so good!
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich war am Samstag und am Sonntag im Park.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I was in the park on Saturday and on Sunday.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich war zu Hause und hatte online Gitarren-Unterricht.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I was at home and I had online guitar lessons.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Was hast du am Wochenende gemacht?
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          What did you do at the weekend?
-        </p>
-
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          japanese: elementary a1 - 1.3 introducing yourself
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          どうぞ よろしく。
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Douzo yoroshiku.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Pleased to meet you.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          はじめまして。 わたし わ まな です。 どうぞ よろしく。
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Hajimemashite. Watashi wa Mana desu. Douzo yoroshiku.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Nice to meet you. I am Mana. Pleased to meet you.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 1.3 introducing yourself
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>japanese</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>どうぞ よろしく。</td>
+              <td><i>Douzo yoroshiku.</i></td>
+              <td>Pleased to meet you.</td>
+            </tr>
+            <tr>
+              <td>はじめまして。 わたし わ まな です。 どうぞ よろしく。</td>
+              <td><i>Hajimemashite. Watashi wa Mana desu. Douzo yoroshiku.</i></td>
+              <td>Nice to meet you. I am Mana. Pleased to meet you.</td>
+            </tr>
+          </tbody>
+        </table>
         
         <!-- section 4 -->
         <p class="exo text-lg text-[--green2] pt-8 pb-2">fire on marz(z)</p>
@@ -749,7 +747,7 @@
       <p>•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
       <p>•</p>
-      <p>Last updated June 5 ‘25.</p>
+      <p>Last updated June 7 ‘25.</p>
     </div>
   </footer>
 
