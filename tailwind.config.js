@@ -8,6 +8,8 @@ module.exports = {
     './0529.html',
     './0530.html',
     './0531.html',
+    './0601.html',
+    './0602.html',
     './0603.html',
     './0604.html',
   ], 
