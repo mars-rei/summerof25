@@ -70,7 +70,7 @@
         </button>
 
         <!-- mobile menu -->
-        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 fustat text-[--green2] sm:hidden bg-[--light1]">
+        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] sm:hidden bg-[--light1]">
           <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline text-[--green1]" aria-current="page">home</a></li>
           <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline">project portfolio</a></li>
           <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline">linkedin</a></li>
@@ -79,16 +79,89 @@
       </div>
 
       <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
-        <input x-model="search" placeholder="search" class="placeholder-[--green2] ml-5 focus:outline-none">
+      <div x-data="getBlogEntries()" class="relative">
+          <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
+              <input 
+                  type="text" 
+                  name="query" 
+                  @focus="show = true"
+                  @blur="hideResults()"
+                  x-ref="searchInput" 
+                  x-model="search" 
+                  x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                  placeholder="search" 
+                  class="placeholder-[--green2] ml-5 focus:outline-none text-[--green2]"
+              />
+          </div>
+          
+          <div 
+            x-show="show" 
+            @mousedown.prevent
+            class="absolute top-full right-0 w-full max-w-64 mt-1 z-50"
+          >
+              <template x-for="blog in filteredBlogEntries" :key="blog.date">
+                  <div 
+                      x-transition
+                      class="bg-[--light1] p-2 max-w-64 rounded-md hover:bg-[--green2]"
+                  >
+                      <a :href="blog.link" @mousedown.prevent>
+                          <p class="exo text-base text-[--dark2]" x-text="blog.date"></p>
+                          <p class="fustat text-sm text-[--dark1]" x-text="blog.preview"></p>
+                      </a>
+                  </div>
+              </template>
+          </div>
       </div>
-    </nav>
-  </header>
 
-      <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
-        <input x-model="search" placeholder="search" class="placeholder-[--green2] ml-5 focus:outline-none">
-      </div>
+      <script>
+        function getBlogEntries() {
+          return {
+            search: '',
+            show: false,
+
+            hideResults() {
+                setTimeout(() => { this.show = false }, 200);
+            },
+
+            allData: [], 
+            loading: true, 
+            
+            init() {
+                fetch('blogData.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('the network response was not ok.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.allData = data;
+                    });
+            },
+
+            get filteredBlogEntries() {
+              if (this.search === '') {
+                return [];
+              }
+              return this.allData.filter((blogEntry) => {
+                return (blogEntry.date
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.preview
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.tags.some(tag => tag
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())));
+              });
+            }
+          };
+        }
+      </script>
+
     </nav>
   </header>
 
@@ -313,7 +386,7 @@
       <p>•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
       <p>•</p>
-      <p>Last updated June 7 ‘25.</p>
+      <p>Last updated June 8 ‘25.</p>
     </div>
   </footer>
 

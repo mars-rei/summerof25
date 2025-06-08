@@ -79,9 +79,89 @@
       </div>
 
       <!-- search bar -->
-      <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
-        <input x-model="search" placeholder="search" class="placeholder-[--green2] ml-5 focus:outline-none">
+      <div x-data="getBlogEntries()" class="relative">
+          <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
+              <input 
+                  type="text" 
+                  name="query" 
+                  @focus="show = true"
+                  @blur="hideResults()"
+                  x-ref="searchInput" 
+                  x-model="search" 
+                  x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                  placeholder="search" 
+                  class="placeholder-[--green2] ml-5 focus:outline-none text-[--green2]"
+              />
+          </div>
+          
+          <div 
+            x-show="show" 
+            @mousedown.prevent
+            class="absolute top-full right-0 w-full max-w-64 mt-1 z-50"
+          >
+              <template x-for="blog in filteredBlogEntries" :key="blog.date">
+                  <div 
+                      x-transition
+                      class="bg-[--light1] p-2 max-w-64 rounded-md hover:bg-[--green2]"
+                  >
+                      <a :href="blog.link" @mousedown.prevent>
+                          <p class="exo text-base text-[--dark2]" x-text="blog.date"></p>
+                          <p class="fustat text-sm text-[--dark1]" x-text="blog.preview"></p>
+                      </a>
+                  </div>
+              </template>
+          </div>
       </div>
+
+      <script>
+        function getBlogEntries() {
+          return {
+            search: '',
+            show: false,
+
+            hideResults() {
+                setTimeout(() => { this.show = false }, 200);
+            },
+
+            allData: [], 
+            loading: true, 
+            
+            init() {
+                fetch('blogData.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('the network response was not ok.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.allData = data;
+                    });
+            },
+
+            get filteredBlogEntries() {
+              if (this.search === '') {
+                return [];
+              }
+              return this.allData.filter((blogEntry) => {
+                return (blogEntry.date
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.preview
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.tags.some(tag => tag
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())));
+              });
+            }
+          };
+        }
+      </script>
+
     </nav>
   </header>
 
@@ -448,7 +528,7 @@
       <p>•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
       <p>•</p>
-      <p>Last updated June 7 ‘25.</p>
+      <p>Last updated June 8 ‘25.</p>
     </div>
   </footer>
 
