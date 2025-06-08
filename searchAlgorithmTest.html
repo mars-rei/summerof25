@@ -38,9 +38,13 @@
 	</head>
 
 	<body class="bg-[--light2] px-4 py-8">
-		<div class="container mx-auto" x-data="getBlogEntries()">
+        <div x-data="getBlogEntries()">
             <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
                 <input 
+                    type="text" 
+                    name="query" 
+                    @focus="show = true"
+                    @blur="hideResults()"
                     x-ref="searchInput" 
                     x-model="search" 
                     x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
@@ -48,24 +52,30 @@
                     class="placeholder-[--green2] ml-5 focus:outline-none"
                 />
             </div>
-			<div>
+            
+            <div x-show="show" @mousedown.prevent>
                 <template x-for="blog in filteredBlogEntries" :key="blog.date">
                     <div 
                         x-transition
-                        class="bg-[--light1] p-2 max-w-64 rounded-md my-1"
+                        class="bg-[--light1] p-2 max-w-64 rounded-md my-1 hover:bg-[--light2]"
                     >
-                        <a :href="blog.link">
+                        <a :href="blog.link" @mousedown.prevent>
                             <p class="exo text-base text-[--dark1]" x-text="blog.date"></p>
                             <p class="fustat text-sm text-[--dark2]" x-text="blog.preview"></p>
                         </a>
                     </div>
-				</template>
-			</div>
-		</div>
+                </template>
+            </div>
+        </div>
+
 		<script>
 			function getBlogEntries() {
 				return {
 					search: '',
+                    show: false,
+                    hideResults() {
+                        setTimeout(() => { this.show = false }, 200);
+                    },
 					allData: blogData,
 					get filteredBlogEntries() {
 						if (this.search === '') {
