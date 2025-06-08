@@ -60,7 +60,15 @@
         </ul>
 
         <!-- mobile menu button -->
-        <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen" x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button" class="flex sm:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
+        <button 
+          x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" 
+          x-bind:aria-expanded="mobileMenuIsOpen" 
+          x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-4 z-20' :null" 
+          type="button" 
+          class="flex sm:hidden" 
+          aria-label="mobile menu" 
+          aria-controls="mobileMenu"
+        >
           <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -70,7 +78,16 @@
         </button>
 
         <!-- mobile menu -->
-        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] sm:hidden bg-[--light1]">
+        <ul 
+          x-cloak x-show="mobileMenuIsOpen" 
+          x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" 
+          x-transition:enter-start="-translate-y-full" 
+          x-transition:enter-end="translate-y-0" 
+          x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" 
+          x-transition:leave-start="translate-y-0" 
+          x-transition:leave-end="-translate-y-full" 
+          class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] bg-[--light1] sm:hidden"
+        >
           <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline text-[--green1]" aria-current="page">home</a></li>
           <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline">project portfolio</a></li>
           <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline">linkedin</a></li>
@@ -166,62 +183,64 @@
   </header>
 
 
-  <div class="px-4 mt-16 mx-10 flex justify-center">
+  <div class="px-4 mt-8 mx-5 md:mt-16 md:mx-10 flex justify-center">
     <div
       x-data="{
-      endDate: new Date('2025-09-21T23:59:59').getTime(),
-      remainingTime: 0,
-      formatTime(time) {
-        const days = Math.floor(time / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((time % (1000 * 60)) / 1000);
-        return { days, hours, minutes, seconds };
-      }
-    }"
+        endDate: new Date('2025-09-21T23:59:59').getTime(),
+        remainingTime: 0,
+        formatTime(time) {
+          const days = Math.floor(time / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((time % (1000 * 60)) / 1000);
+          return { days, hours, minutes, seconds };
+        }
+      }"
       x-init="() => {
-      setInterval(() => {
-        const now = new Date().getTime();
-        const remainingTime = endDate - now;
-        $data.remainingTime = remainingTime > 0 ? remainingTime : 0;
-      }, 1000);
-    }" class="text-center">
+        setInterval(() => {
+          const now = new Date().getTime();
+          const remainingTime = endDate - now;
+          $data.remainingTime = remainingTime > 0 ? remainingTime : 0;
+        }, 1000);
+      }" 
+      class="text-center mb-24 md:mb-0"
+    >
       <template x-if="remainingTime > 0">
         <div>
           <div class="flex flex-row items-center gap-10">
             <div>
-              <div class="jersey text-4xl mb-5 text-[--green2]">days</div>
-              <div class="ktp text-7xl text-[--dark1]"
+              <div class="jersey text-2xl md:text-4xl mb-5 text-[--green2]">days</div>
+              <div class="ktp text-5xl md:text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).days">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5 text-[--green2]">hours</div>
-              <div class="ktp text-7xl text-[--dark1]"
+              <div class="jersey text-2xl md:text-4xl mb-5 text-[--green2]">hours</div>
+              <div class="ktp text-5xl md:text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).hours">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5 text-[--green2]">minutes</div>
-              <div class="ktp text-7xl text-[--dark1]"
+              <div class="jersey text-2xl md:text-4xl mb-5 text-[--green2]">minutes</div>
+              <div class="ktp text-5xl md:text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).minutes">
               </div>
             </div>
             <div>
-              <div class="jersey text-4xl mb-5 text-[--green2]">seconds</div>
-              <div class="ktp text-7xl text-[--dark1]"
+              <div class="jersey text-2xl md:text-4xl mb-5 text-[--green2]">seconds</div>
+              <div class="ktp text-5xl md:text-7xl text-[--dark1]"
                 x-text="formatTime(remainingTime).seconds">
               </div>
             </div>
           </div>
           <div>
-            <p class="text-[--dark2] jersey text-4xl mt-10 -mb-16">'TIL FINAL YEAR OF UNI</p>
+            <p class="text-[--dark2] jersey text-2xl md:text-4xl mt-5 md:mt-10 -mb-8 md:-mb-16">'TIL FINAL YEAR OF UNI</p>
           </div>
         </div>
       </template>
       <template x-if="remainingTime <= 0">
         <div>
-          <div class="exo text-6xl mb-16 mt-10 text-[--dark1]">the summer of '25 has come to an end.</div>
+          <div class="exo text-4xl md:text-6xl mb-8 md:mb-16 mt-5 md:mt-10 text-[--dark1]">the summer of '25 has come to an end.</div>
         </div>
       </template>
     </div>
@@ -248,15 +267,15 @@
       <!-- profile icon -->
       <div class="px-4">
         <div class="relative w-fit">
-          <div class="-mb-50 p-2 rounded-full bg-[--light1]" id="profileIcon">
-              <img class="max-w-80 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
+          <div class="-mt-10 md:mt-0 -mb-50 p-2 rounded-full bg-[--light1]" id="profileIcon">
+              <img class="max-w-40 md:max-w-80 rounded-full object-cover object-center" src="imgs/profileIcon.jpg" alt="Rounded avatar">
           </div>
         </div>
       </div>
 
       <!-- divider with links -->
-      <div class="bg-[--light1] py-4">
-        <ul class="text-[--green2] items-center flex exo text-2xl gap-8 ml-80 justify-center">
+      <div class="bg-[--light1] py-6 mt-20 md:mt-0 md:py-4">
+        <ul class="hidden md:flex text-[--green2] items-center exo text-2xl gap-8 ml-80 justify-center">
           <li 
             @click="toggleTag('all'); $dispatch('tag-updated')" 
             :class="{ 'underline decoration-4 underline-offset-[18px] decoration-[--green1]': activeTag === null }">
@@ -302,16 +321,16 @@
     </div>
 
     <div class="grid grid-cols-4 grid-rows-1">
-      <div class="col-span-1 px-4">
-        <div class="ml-2 my-10 mt-44">
+      <div class="col-span-4 md:col-span-1 px-4">
+        <div class="ml-2 my-5 md:my-10 md:mt-44 mt-24">
           <!-- left side -->
-          <p class="exo text-4xl text-[--dark1] my-4">MARSY'S SUMMER OF '25</p>
-          <p class="fustat text-[--green2] my-4">@imogen.dicen </p>
-          <p class="fustat text-[--dark2] my-4">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
+          <p class="exo text-3xl md:text-4xl text-[--dark1] my-4">MARSY'S SUMMER OF '25</p>
+          <p class="fustat text-base text-[--green2] my-4">@imogen.dicen </p>
+          <p class="fustat text-base text-[--dark2] my-4">just finished second year of university! unsure of what to do this summer so here i am documenting my progress in sustaining a productive streak.</p>
         </div>
         
         <!-- checklist -->
-        <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+        <div class="hidden md:block my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
           <p class="exo text-2xl text-[--dark1] mb-2">summer checklist</p>
           <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
             <li class="flex items-start gap-2">
@@ -377,7 +396,7 @@
         </div>
       
         <!-- tags -->
-        <div class="my-4 ml-4">
+        <div class="hidden md:block my-4 ml-4">
           <p class="exo text-2xl text-[--dark1] my-4">tags</p>
           <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
             <li><p class="bg-[--light1] rounded-full px-4 py-1">art</p></li>
@@ -391,11 +410,11 @@
         </div>
       </div>
 
-      <div class="col-span-3 ml-10 mr-5 mt-5">
+      <div class="col-span-4 md:col-span-3 ml-5 md:ml-10 mr-5 md:mt-5">
         <!-- right side -->
 
         <div class="bg-[--light1] rounded-lg p-4 mb-5">
-          <div class="fustat text-1xl text-[--dark2]">
+          <div class="fustat text-base text-[--dark2]">
             welcome to my blog! my name's imogen but you can call me mars.
             <br />
             <br />
@@ -406,22 +425,46 @@
         </div>
 
         <div 
-            x-show="shouldShow(['backend', 'frontend', 'languages'])" 
+            x-show="shouldShow(['frontend', 'languages'])" 
             x-transition
             class="bg-[--light1] rounded-lg p-4 mb-5">
           <p class="exo text-2xl text-[--dark1] mb-2">latest blog post</p>
 
-          <a href="0605.html">
+          <a href="0607.html">
             <div class="grid grid-cols-5 grid-rows-1 mt-5 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0605/1.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0607/" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
+                <p class="exo text-lg text-[--dark1]">jun 7</p>
+                <p class="fustat text-1xl text-[--dark2]">
+                  pending...
+                </p>
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
+                  <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
+                  <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">languages</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div 
+            x-show="shouldShow(['backend', 'frontend', 'languages'])" 
+            x-transition
+            class="bg-[--light1] rounded-lg p-4 mb-5">
+
+          <a href="0605.html">
+            <div class="grid grid-cols-5 grid-rows-1 gap-5">
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0605/1.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
+              </div>
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">jun 5</p>
                 <p class="fustat text-1xl text-[--dark2]">
                   today, i predicted variables, wrote 4 blogs, and still didn't design those blind boxes
                 </p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">backend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">languages</p>
@@ -438,13 +481,13 @@
 
           <a href="0604.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0604/4.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0604/4.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">jun 4</p>
                 <p class="fustat text-1xl text-[--dark2]">when i'm the fire in 'fire on marz'</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">languages</p>
@@ -461,13 +504,13 @@
 
           <a href="0603.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0603/11.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0603/11.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">jun 3</p>
                 <p class="fustat text-1xl text-[--dark2]">decorated functions, decorated portfolios, and forgot to decorate my room (more like clean it)</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">backend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
@@ -486,13 +529,13 @@
 
           <a href="0602.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0602/9.jpg" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0602/9.jpg" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">jun 2</p>
                 <p class="fustat text-1xl text-[--dark2]">my to-do list is 80% done (json lost this round)</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">languages</p>
@@ -509,13 +552,13 @@
 
           <a href="0601.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0601/5.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0601/5.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">jun 1</p>
                 <p class="fustat text-1xl text-[--dark2]">sundays unscripted: frontend wins, flashcards & festive side hustle plans</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">languages</p>
@@ -532,13 +575,13 @@
 
           <a href="0531.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0531/3.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0531/3.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 31</p>
                 <p class="fustat text-1xl text-[--dark2]">today’s to-do list: 2 wins, 1 loss & lots of coffee</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">portfolio</p>
                 </div>
@@ -554,13 +597,13 @@
 
           <a href="0530.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0530/3.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0530/3.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 30</p>
                 <p class="fustat text-1xl text-[--dark2]">rebranding and tailwind breakthroughs</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">linkedin</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">portfolio</p>
@@ -577,13 +620,13 @@
 
           <a href="0529.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0529/3.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0529/3.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 29</p>
                 <p class="fustat text-1xl text-[--dark2]">jquery refreshers & font fixes: a frontend focused day (and profile readme's?!!)</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">linkedin</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">portfolio</p>
@@ -600,13 +643,13 @@
 
           <a href="0528.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0528/6.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0528/6.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 28</p>
                 <p class="fustat text-1xl text-[--dark2]">today i learned: ids are unique, bootstrap is powerful, and japan awaits</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">linkedin</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">portfolio</p>
@@ -623,13 +666,13 @@
 
           <a href="0527.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0527/3.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0527/3.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 27</p>
                 <p class="fustat text-1xl text-[--dark2]">code, design, and documentation: a trifecta of productivity (with time miscalculations)</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">linkedin</p>
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">portfolio</p>
@@ -646,13 +689,13 @@
 
           <a href="0526.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                <img src="imgs/0526/3.png" class="h-48 w-48 rounded-lg object-cover"/>
+              <div class="col-span-2 md:col-span-1">
+                <img src="imgs/0526/3.png" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg object-cover"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 26</p>
                 <p class="fustat text-1xl text-[--dark2]">code, colour palettes & the carrd aesthetic: my blog’s blueprint</p>
-                <div class="flex flex-row gap-4">
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
                   <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">frontend</p>
                 </div>
               </div>
@@ -667,13 +710,15 @@
 
           <a href="0524.html">
             <div class="grid grid-cols-5 grid-rows-1 gap-5">
-              <div class="col-span-1">
-                  <img src="imgs/0524/1.jpg" class="h-48 w-48 rounded-lg"/>
+              <div class="col-span-2 md:col-span-1">
+                  <img src="imgs/0524/1.jpg" class="w-fit aspect-square md:h-48 md:w-48 rounded-lg"/>
               </div>
-              <div class="col-span-4">
+              <div class="col-span-3 md:col-span-4 wrap-anywhere">
                 <p class="exo text-lg text-[--dark1]">may 24</p>
                 <p class="fustat text-1xl text-[--dark2]">from stress to sketching: my final summer break</p>
-                <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
+                <div class="flex flex-row flex-wrap gap-x-2 md:gap-4">
+                  <p class="mt-3 bg-[--green1] text-[--light1] rounded-full px-4 py-1 text-1xl w-fit">art</p>
+                </div>
               </div>
             </div>
           </a>
@@ -687,23 +732,24 @@
   <footer class="mt-5 bg-[--green2]">
     <div class="flex items-center justify-between m-5" >
       <div class="flex items-center gap-4">
-        <h3 class="exo text-[--light1] text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+        <h3 class="exo text-[--light1] text-2xl md:text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
       </div>
       <div class="relative flex flex-col">
-        <button @click="darkMode = !darkMode" class="text-1xl fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
+        <button @click="darkMode = !darkMode" class="text-base fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
           toggle theme
         </button>
       </div>
     </div>
     <hr class="border-[--light2] mr-5 ml-5">
-    <div class="gap-5 text-1xl fustat flex justify-center text-[--light1] p-5">
+    <div class="place-items-center p-5 text-base fustat md:gap-5 md:flex md:justify-center text-[--light1]">
       <p>© 2025 Imogen Dicen. All rights reserved.</p>
-      <p>•</p>
+      <p class="hidden md:visible">•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
-      <p>•</p>
+      <p class="hidden md:visible">•</p>
       <p>Last updated June 8 ‘25.</p>
     </div>
   </footer>
 
 </body>
+
 </html>

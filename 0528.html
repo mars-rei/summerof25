@@ -461,23 +461,23 @@
   </div>
   
   <!-- footer -->
-  <footer class="mt-10 bg-[--green2]">
+  <footer class="mt-5 bg-[--green2]">
     <div class="flex items-center justify-between m-5" >
       <div class="flex items-center gap-4">
-        <h3 class="exo text-[--light1] text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+        <h3 class="exo text-[--light1] text-2xl md:text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
       </div>
       <div class="relative flex flex-col">
-        <button @click="darkMode = !darkMode" class="text-1xl fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
+        <button @click="darkMode = !darkMode" class="text-base fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
           toggle theme
         </button>
       </div>
     </div>
     <hr class="border-[--light2] mr-5 ml-5">
-    <div class="gap-5 text-1xl fustat flex justify-center text-[--light1] p-5">
+    <div class="place-items-center p-5 text-base fustat md:gap-5 md:flex md:justify-center text-[--light1]">
       <p>© 2025 Imogen Dicen. All rights reserved.</p>
-      <p>•</p>
+      <p class="hidden md:visible">•</p>
       <p>Built with Tailwind, and Alpine.js.</p>
-      <p>•</p>
+      <p class="hidden md:visible">•</p>
       <p>Last updated June 8 ‘25.</p>
     </div>
   </footer>
