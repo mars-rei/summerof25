@@ -73,13 +73,30 @@
 				return {
 					search: '',
                     show: false,
+
                     hideResults() {
                         setTimeout(() => { this.show = false }, 200);
                     },
-					allData: blogData,
+
+					allData: [], 
+                    loading: true, 
+                    
+                    init() {
+                        fetch('blogData.json')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('the network response was not ok.');
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                this.allData = data;
+                            });
+                    },
+
 					get filteredBlogEntries() {
 						if (this.search === '') {
-							return this.allData;
+							return [];
 						}
 						return this.allData.filter((blogEntry) => {
 							return (blogEntry.date
@@ -98,93 +115,6 @@
 					}
 				};
 			}
-
-			const blogData = [
-                {
-                    img: "imgs/0605/1.png",
-                    date: "jun 5",
-                    preview: "today, i predicted variables, wrote 4 blogs, and still didn't design those blind boxes",
-                    tags: ["backend", "frontend", "languages"],
-                    link: "0605.html"
-                },
-                {
-                    img: "imgs/0604/4.png",
-                    date: "jun 4",
-                    preview: "when i'm the fire in 'fire on marz'",
-                    tags: ["art", "frontend", "languages"],
-                    link: "0604.html"
-                },
-                {
-                    img: "imgs/0603/11.png",
-                    date: "jun 3",
-                    preview: "decorated functions,, decorated portfolios,, and forgot to decorate my room (more like clean it)",
-                    tags: ["art", "backend", "frontend", "languages", "linkedin"],
-                    link: "0603.html"
-                },
-                {
-                    img: "imgs/0602/9.jpg",
-                    date: "jun 2",
-                    preview: "my to-do list is 80% done (json lost this round)",
-                    tags: ["art", "frontend", "languages"],
-                    link: "0602.html"
-                },
-                {
-                    img: "imgs/0601/5.png",
-                    date: "jun 1",
-                    preview: "sundays unscripted: frontend wins, flashcards & festive side hustle plans",
-                    tags: ["art", "frontend", "languages"],
-                    link: "0601.html"
-                },
-                {
-                    img: "imgs/0531/3.png",
-                    date: "may 31",
-                    preview: "today's to-do list: 2 wins, 1 loss & lots of coffee",
-                    tags: ["frontend", "portfolio"],
-                    link: "0531.html"
-                },
-                {
-                    img: "imgs/0530/3.png",
-                    date: "may 30",
-                    preview: "rebranding and tailwind breakthroughs",
-                    tags: ["frontend", "linkedin", "portfolio"],
-                    link: "0530.html"
-                },
-                {
-                    img: "imgs/0529/3.png",
-                    date: "may 29",
-                    preview: "jquery refreshers & font fixes: a frontend focused day (and profile readme's?!!)",
-                    tags: ["frontend", "linkedin", "portfolio"],
-                    link: "0529.html"
-                },
-                {
-                    img: "imgs/0528/6.png",
-                    date: "may 28",
-                    preview: "today i learned: ids are unique, bootstrap is powerful, and japan awaits",
-                    tags: ["frontend", "linkedin", "portfolio"],
-                    link: "0528.html"
-                },
-                {
-                    img: "imgs/0527/3.png",
-                    date: "may 27",
-                    preview: "code, design, and documentation: a trifecta of productivity (with time miscalculations)",
-                    tags: ["frontend", "linkedin", "portfolio"],
-                    link: "0527.html"
-                },
-                {
-                    img: "imgs/0526/3.png",
-                    date: "may 26",
-                    preview: "code, colour palettes & the carrd aesthetic: my blog's blueprint",
-                    tags: ["frontend"],
-                    link: "0526.html"
-                },
-                {
-                    img: "imgs/0524/1.jpg",
-                    date: "may 24",
-                    preview: "from stress to sketching: my final summer break",
-                    tags: ["art"],
-                    link: "0524.html"
-                }
-            ];
 		</script>
 	</body>
 </html>
