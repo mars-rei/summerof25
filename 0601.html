@@ -166,10 +166,10 @@
   </header>
 
   <!-- heading -->
-  <div class="ktp text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
+  <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
     june 1
   </div>
-  <div class="text-[--dark2] jersey text-4xl mt-10 mb-10 flex justify-center">
+  <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex text-center md:justify-center">
       <p>sundays unscripted: frontend wins, flashcards & festive side hustle plans</p>
   </div>
 
@@ -179,11 +179,11 @@
   <div class="bg-[--light1] py-8"></div>
 
   <div class="grid grid-cols-4 grid-rows-1">
-    <div class="col-span-1 px-4">
+    <div class="col-span-4 md:col-span-1 px-4">
       <!-- left side -->
 
       <!-- weekly checklist -->
-      <div class="my-10">
+      <div class="hidden md:block my-10">
         <p class="exo text-4xl text-[--dark1] my-4">this week's goals</p>
         <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
           <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
@@ -211,7 +211,7 @@
       </div>
 
       <!-- small countdown -->
-      <div class="py-4 pb-8">
+      <div class="hidden md:block py-4 pb-8">
         <div class="flex justify-center">
           <div
             x-data="{
@@ -275,7 +275,7 @@
       </div>
     
       <!-- tags -->
-      <div class="my-4 ml-4">
+      <div class="hidden md:block my-4 ml-4">
         <p class="exo text-2xl text-[--dark1] my-4">tags</p>
         <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
           <li><p class="bg-[--light1] rounded-full px-4 py-1">art</p></li>
@@ -285,7 +285,7 @@
       </div>
     </div>
 
-    <div class="col-span-3 ml-10 mr-5 mt-5">
+    <div class="col-span-4 md:col-span-3 ml-5 md:ml-10 mr-5 mt-5">
       <!-- blog content -->
       <div class="bg-[--light1] rounded-lg p-4">
         <p class="exo text-2xl text-[--green1]">happy pride month!!!!</p>
@@ -343,7 +343,7 @@
           when it comes to language learning, i try my best to take notes but i realised that digital flashcards using the spaced reptition
           method may be best for me (as someone with questionable memory). so, i took to anki to make a few flashcards.
         </p>
-        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-2/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-fit md:w-2/5">
           <img src="imgs/0601/1.png" class="rounded-lg" />
         </div>
 
@@ -356,7 +356,7 @@
         <p class="fustat text-1xl text-[--green1] py-2">
           the first few lessons weren't too bad, but i got confused in the later lessons (was quite wordy).
         </p>
-        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-fit md:w-3/5">
           <img src="imgs/0601/2.png" class="rounded-lg" />
         </div>
 
@@ -366,10 +366,10 @@
         <p class="fustat text-1xl text-[--green1] py-2">
           after lunch, i went back to work and finished the mockup for the blog page template on figma at 16.37.
         </p>
-        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-fit md:w-3/5">
           <img src="imgs/0601/3.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-2 w-fit md:w-3/5">
           <img src="imgs/0601/4.jpg" class="rounded-lg" />
         </div>
 

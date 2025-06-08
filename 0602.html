@@ -167,10 +167,10 @@
 
 
   <!-- heading -->
-  <div class="ktp text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
+  <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
     june 2
   </div>
-  <div class="text-[--dark2] jersey text-4xl mt-10 mb-10 flex justify-center">
+  <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
       <p>my to-do list is 80% done (json lost this round)</p>
   </div>
 
@@ -180,11 +180,11 @@
   <div class="bg-[--light1] py-8"></div>
 
   <div class="grid grid-cols-4 grid-rows-1">
-    <div class="col-span-1 px-4">
+    <div class="col-span-4 md:col-span-1 px-4">
       <!-- left side -->
 
       <!-- weekly checklist -->
-      <div class="my-10">
+      <div class="hidden md:block my-10">
         <p class="exo text-4xl text-[--dark1] my-4">this week's goals</p>
         <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
           <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
@@ -217,7 +217,7 @@
       </div>
 
       <!-- small countdown -->
-      <div class="py-4 pb-8">
+      <div class="hidden md:block py-4 pb-8">
         <div class="flex justify-center">
           <div
             x-data="{
@@ -307,7 +307,7 @@
       </div>
     
       <!-- tags -->
-      <div class="my-4 ml-4">
+      <div class="hidden md:block my-4 ml-4">
         <p class="exo text-2xl text-[--dark1] my-4">tags</p>
         <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
           <li><p class="bg-[--light1] rounded-full px-4 py-1">art</p></li>
@@ -317,7 +317,7 @@
       </div>
     </div>
 
-    <div class="col-span-3 ml-10 mr-5 mt-5">
+    <div class="col-span-4 md:col-span-3 ml-5 md:ml-10 mr-5 mt-5">
       <!-- blog content -->
       <div class="bg-[--light1] rounded-lg p-4">
         <p class="exo text-2xl text-[--green1]">learning languages consistency, failed doodles, and tag filtering complete</p>
@@ -340,138 +340,117 @@
           </li>
         </ul>
 
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          french: elementary a2 - 1.2 describing past events
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je me suis promenée avec ma fille hier après-midi.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had a stroll with my daughter yesterday afternoon.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            french: elementary a2 - 1.2 describing past events
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>french</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Je me suis promenée avec ma fille hier après-midi.</i></td>
+              <td>I had a stroll with my daughter yesterday afternoon.</td>
+            </tr>
+            <tr>
+              <td><i>Je me suis promenée.</i></td>
+              <td>I had a stroll.</td>
+            </tr>
+            <tr>
+              <td><i>Je me suis reposée tout la journée.</i></td>
+              <td>I rested all day long.</td>
+            </tr>
+            <tr>
+              <td><i>Je me suis reposée.</i></td>
+              <td>I rested.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis allée au resto avec ma famille.</i></td>
+              <td>I went to the restaurant with my family.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis allée au resto.</i></td>
+              <td>I went to the restaurant.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis restée à la maison.</i></td>
+              <td>I stayed at home.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis sortie avec des amis.</i></td>
+              <td>I went out with friends.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis sortie.</i></td>
+              <td>I went out.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je me suis promenée.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had a stroll.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            german: elementary a2 - 1.2 saying what you did yesterday
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>german</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Er hatte Spaß auf der Party.</i></td>
+              <td>He had a good time at the party.</td>
+            </tr>
+            <tr>
+              <td><i>Ich habe Spaß.</i></td>
+              <td>I'm having a good time.</td>
+            </tr>
+            <tr>
+              <td><i>Ich hatte Besuch.</i></td>
+              <td>I had a visitor. / I had visitors.</td>
+            </tr>
+            <tr>
+              <td><i>Ich hatte Fieber.</i></td>
+              <td>I had a fever.</td>
+            </tr>
+            <tr>
+              <td><i>Ich hatte Online-Unterricht.</i></td>
+              <td>I had online classes.</td>
+            </tr>
+            <tr>
+              <td><i>Ich hatte Spaß.</i></td>
+              <td>I had fun.</td>
+            </tr>
+            <tr>
+              <td><i>Ich war auch zu Hause, ich hatte Besuch.</i></td>
+              <td>I was at home too, I had a visitor.</td>
+            </tr>
+          </tbody>
+        </table>
 
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je me suis reposée tout la journée.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I rested all day long.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je me suis reposée.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I rested.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je suis allée au resto avec ma famille.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I went to the restaurant with my family.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je suis allée au resto.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I went to the restaurant.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je suis restée à la maison.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I stayed at home.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je suis sortie avec des amis.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I went out with friends.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Je suis sortie.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I went out.
-        </p>
-
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          german: elementary a2 - 1.2 saying what you did yesterday
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Er hatte Spaß auf der Party.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          He had a good time at the party.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich habe Spaß.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I'm having a good time.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich hatte Besuch.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had a visitor. / I had visitors.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich hatte Fieber.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had a fever.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich hatte Online-Unterricht.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had online classes.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich hatte Spaß.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I had fun.
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Ich war auch zu Hause, ich hatte Besuch.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I was at home too, I had a visitor.
-        </p>
-
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          japanese: elementary a1 - 1.2 saying your name
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          わたし わ まりこ です。
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          Watashi wa Mariko desu.
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          I am Mariko.
-        </p>
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 1.2 saying your name
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>japanese</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>わたし わ まりこ です。</td>
+              <td><i>Watashi wa Mariko desu.</i></td>
+              <td>I am Mariko.</td>
+            </tr>
+          </tbody>
+        </table>
 
 
         <!-- section 2 -->
@@ -480,31 +459,31 @@
         <p class="fustat text-1xl text-[--green1] py-2">
           at 13.46, i finished filling in a sketch book page. again, i think i should study art anatomy properly, but will i really? nah.
         </p>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/1.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/2.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/3.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/4.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/5.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/6.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/7.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/8.jpg" class="rounded-lg" />
         </div>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/9.jpg" class="rounded-lg" />
         </div>
         
@@ -518,7 +497,7 @@
         <p class="fustat text-1xl text-[--green1] py-2">
           i first tried adding some relevant info to a json file for my javascript code to read from
         </p>
-        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-3/5">
+        <div class="bg-[--light2] p-2 rounded-lg mt-8 w-fit md:w-3/5">
           <img src="imgs/0602/10.png" class="rounded-lg" />
         </div>
 
