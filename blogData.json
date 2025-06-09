@@ -1,5 +1,12 @@
 [
     {
+        "img": "imgs/0608/1.png",
+        "date": "jun 8",
+        "preview": "search functionality, mobile responsiveness, and daily quests",
+        "tags": ["frontend", "languages"],
+        "link": "0608.html"
+    },
+    {
         "img": "imgs/0607/6.png",
         "date": "jun 7",
         "preview": "from hiragana to html",

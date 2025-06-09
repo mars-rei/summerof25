@@ -1,0 +1,785 @@
+<!doctype html>
+  
+<html
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./css/main.css" rel="stylesheet" />
+
+  <title>8th jun '25</title>
+
+  <!-- tailwind core (need to remove after build is fixed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- apline core -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- alpine plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- exo 2 font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- fustat font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap" rel="stylesheet">
+
+  <!-- kdam thmor pro font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+
+  <!-- jersey 25 font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[--light2] flex flex-col min-h-screen">
+
+  <header class="bg-[--light1]">
+    <nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between gap-4 px-6 py-4" aria-label="penguin ui menu">
+      <div class="flex items-center gap-4">
+        <!-- desktop menu -->
+        <ul class="text-[--dark2] hidden items-center gap-4 shrink-0 sm:flex exo text-3xl" id="headerLinks">
+          <li class="text-[--green2]"><a href="index.html">home</a></li>
+          <li>|</li>
+          <li><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4">project portfolio</a></li>
+          <li>|</li>
+          <li><a href="https://www.linkedin.com/in/imogen-dicen/">linkedin</a></li>
+          <li>|</li>
+          <li><a href="https://github.com/mars-rei">github</a></li>
+        </ul>
+
+        <!-- mobile menu button -->
+        <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen" x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button" class="flex sm:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
+          <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- mobile menu -->
+        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] sm:hidden bg-[--light1]">
+          <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline text-[--green1]" aria-current="page">home</a></li>
+          <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline">project portfolio</a></li>
+          <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline">linkedin</a></li>
+          <li class="p-2"><a href="https://github.com/mars-rei" class="w-full text-lg font-medium focus:underline">github</a></li>
+        </ul>
+      </div>
+
+      <!-- search bar -->
+      <div x-data="getBlogEntries()" class="relative">
+          <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
+              <input 
+                  type="text" 
+                  name="query" 
+                  @focus="show = true"
+                  @blur="hideResults()"
+                  x-ref="searchInput" 
+                  x-model="search" 
+                  x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                  placeholder="search" 
+                  class="placeholder-[--green2] ml-5 focus:outline-none text-[--green2]"
+              />
+          </div>
+          
+          <div 
+            x-show="show" 
+            @mousedown.prevent
+            class="absolute top-full right-0 w-full max-w-64 mt-1 z-50"
+          >
+              <template x-for="blog in filteredBlogEntries" :key="blog.date">
+                  <div 
+                      x-transition
+                      class="bg-[--light1] p-2 max-w-64 rounded-md hover:bg-[--green2]"
+                  >
+                      <a :href="blog.link" @mousedown.prevent>
+                          <p class="exo text-base text-[--dark2]" x-text="blog.date"></p>
+                          <p class="fustat text-sm text-[--dark1]" x-text="blog.preview"></p>
+                      </a>
+                  </div>
+              </template>
+          </div>
+      </div>
+
+      <script>
+        function getBlogEntries() {
+          return {
+            search: '',
+            show: false,
+
+            hideResults() {
+                setTimeout(() => { this.show = false }, 200);
+            },
+
+            allData: [], 
+            loading: true, 
+            
+            init() {
+                fetch('blogData.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('the network response was not ok.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.allData = data;
+                    });
+            },
+
+            get filteredBlogEntries() {
+              if (this.search === '') {
+                return [];
+              }
+              return this.allData.filter((blogEntry) => {
+                return (blogEntry.date
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.preview
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.tags.some(tag => tag
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())));
+              });
+            }
+          };
+        }
+      </script>
+
+    </nav>
+  </header>
+
+
+  <!-- heading -->
+  <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
+    june 8
+  </div>
+  <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
+    search functionality, mobile responsiveness, and daily quests
+  </div>
+
+  <!-- main body -->
+
+  <!-- divider  -->
+  <div class="bg-[--light1] py-8"></div>
+
+  <div class="grid grid-cols-4 grid-rows-1">
+    <div class="col-span-4 md:col-span-1 px-4">
+      <!-- left side -->
+
+      <!-- weekly checklist -->
+      <div class="hidden md:block my-10">
+        <p class="exo text-4xl text-[--dark1] my-4">this week's goals</p>
+        <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+          <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+              <span class="flex">finish blog homepage functionality</span>
+            </li>
+            <hr class="border-[--light2] ml-8">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+              <span class="flex">finish 4 pages of sketchbook</span>
+            </li>
+            <hr class="border-[--light2] ml-8">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+              <span class="flex">datacamp course 24</span>
+            </li>
+            <hr class="border-[--light2] ml-8">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+              <span class="flex">datacamp course 26</span>
+            </li>
+            <hr class="border-[--light2] ml-8">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+              <span class="flex">design christmas fire on marz blindbox set</span>
+            </li>
+          </ul> 
+        </div>
+      </div>
+
+      <!-- small countdown -->
+      <div class="hidden md:block py-4 pb-8">
+        <div class="flex justify-center">
+          <div
+            x-data="{
+            endDate: new Date('2025-09-21T23:59:59').getTime(),
+            remainingTime: 0,
+            formatTime(time) {
+              const days = Math.floor(time / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((time % (1000 * 60)) / 1000);
+              return { days, hours, minutes, seconds };
+            }
+          }"
+            x-init="() => {
+            setInterval(() => {
+              const now = new Date().getTime();
+              const remainingTime = endDate - now;
+              $data.remainingTime = remainingTime > 0 ? remainingTime : 0;
+            }, 1000);
+          }" class="text-center">
+            <template x-if="remainingTime > 0">
+              <div>
+                <div class="flex flex-row items-center gap-5">
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">days</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).days">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">hours</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).hours">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">mins</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).minutes">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">secs</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).seconds">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-[--dark2] jersey text-2xl mt-5">'TIL FINAL YEAR OF UNI</p>
+                </div>
+              </div>
+            </template>
+            <template x-if="remainingTime <= 0">
+              <div>
+                <div class="exo text-4xl text-[--dark1]">the summer of '25 has come to an end.</div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      
+      <!-- checklist -->
+      <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+        <p class="exo text-2xl text-[--dark1] mb-2">today's checklist</p>
+        <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">do yesterday's blog</span>
+          </li>
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">finish blog search bar functionality</span>
+          </li>
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">finish styling for notes within blogs</span>
+          </li>
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">mobile responsiveness</span>
+          </li>
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">language dailies</span>
+          </li>   
+        </ul> 
+      </div>
+    
+      <!-- tags -->
+      <div class="hidden md:block my-4 ml-4">
+        <p class="exo text-2xl text-[--dark1] my-4">tags</p>
+        <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">frontend</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">languages</p></li>
+        </ul>    
+      </div>
+    </div>
+
+    <div class="col-span-4 md:col-span-3 ml-5 md:ml-10 mr-5 mt-5">
+      <!-- blog content -->
+      <div class="bg-[--light1] rounded-lg p-4">
+        <p class="exo text-2xl text-[--green1]">proud to say that the blog is finally running! (just needs to be a tad bit more responsive)</p>
+
+        <!-- section 1 -->
+        <p class="exo text-lg text-[--green2] pt-8 pb-2">search bar breakthroughs</p>
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          i started the day off with the most important task - finishing off the search bar functionality.
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          continuing off from yesterday, i wanted to make sure that results were only shown when the search bar is being focused on; i found this link 
+          that helped quite a bit:
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
+          <li class="ml-4">
+            <a 
+              href="https://github.com/alpinejs/alpine/discussions/1951"
+              class="underline"
+            >
+              show div when the search bar is focused on with alpine.js
+            </a>
+          </li>
+        </ul>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
+          after fiddling and tweaking bits of code, i was able to get it working with my current code. now, i wanted to make the search work 
+          with a json file rather than using an array within the html javascript; this link helped with fetching the data needed 
+          from my json file:
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
+          <li class="ml-4">
+            <a 
+              href="https://reqbin.com/code/javascript/wc3qbk0b/javascript-fetch-json-example#:~:text=To%20fetch%20JSON%20from%20the,resolves%20with%20a%20JSON%20object"
+              class="underline"
+            >
+              show div when the search bar is focused on with alpine.js
+            </a>
+          </li>
+        </ul>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
+          once i got it working by 10.36, i thought about the global blog search i had in mind, and concluded that it would be inefficient, so i kept the 
+          json file minimal with each blog's headings, previews and etc.
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          by 11.15 i had finished integrating the search bar into every html page i have (copied and pasted the header).
+        </p>
+
+
+        <!-- section 2 -->
+        <p class="exo text-lg text-[--green2] pt-8 pb-2">will the blog respond?</p>
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          by 14.31 i finished implementing the responsive for the home page, except splitting the checklist and 
+          tag elements to the bottom of the page (i don't know how to separate them out of order). so, i guess i'll have to 
+          look into it later on! i found a link that might help me with it:
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
+          <li class="ml-4">
+            <a 
+              href="https://dev.to/hitesh_developer/mastering-responsive-design-with-tailwind-css-tips-and-tricks-1f39"
+              class="underline"
+            >
+              mastering responsive design with tailwindcss
+            </a>
+          </li>
+        </ul>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
+          at 16.07 i had finished doing all the mobile responsiveness i could apply.
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          for some of the headings, i had to alternate between justify-center and text-center; i wasn't really fan of the inconsistency but i 
+          will look into this for future implementations.
+        </p>
+
+        
+        <!-- section 3 -->
+        <p class="exo text-lg text-[--green2] pt-8 pb-2">busuu, anki & me</p>
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          more japanese, french and german vocab for you and i (ended the day at 19.07)!
+        </p>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 3.1 saying your occupation
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>hiragana</th>
+              <th>kanji</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>いしゃ</td>
+              <td>医者</td>
+              <td><i>isha</i></td>
+              <td>doctor</td>
+            </tr>
+            <tr>
+              <td>かいしゃいん</td>
+              <td>会社員</td>
+              <td><i>kaishain</i></td>
+              <td>company employee</td>
+            </tr>
+            <tr>
+              <td>がくせい </td>
+              <td>学生</td>
+              <td><i>gakusei</i></td>
+              <td>student</td>
+            </tr>
+            <tr>
+              <td>すずき さん わ せんせい です。</td>
+              <td></td>
+              <td><i>Suzuki-san wa sensei desu.</i></td>
+              <td>Mr Suzuki is a teacher.</td>
+            </tr>
+            <tr>
+              <td>せんせい</td>
+              <td>先生</td>
+              <td><i>sensei</i></td>
+              <td>teacher / professor</td>
+            </tr>
+            <tr>
+              <td>ゆりこ さん わ かいしゃいん です。</td>
+              <td></td>
+              <td><i>Yuriko-san wa kaishain desu.</i></td>
+              <td>Yuriko is a company employee.</td>
+            </tr>
+            <tr>
+              <td>よしこ さん わ いしゃ です。</td>
+              <td></td>
+              <td><i>Yoshiko-san wa isha desu.</i></td>
+              <td>Yoshiko is a doctor.</td>
+            </tr>
+            <tr>
+              <td>わたし わ がくせい です。</td>
+              <td></td>
+              <td><i>Watashi wa gakusei desu.</i></td>
+              <td>I am a student.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 3.2 talking about students
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>hiragana</th>
+              <th>kanji</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>けいこ さん わ こうこうせい です。</td>
+              <td></td>
+              <td><i>Keiko-san wa koukousei desu.</i></td>
+              <td>Keiko is a high school student.</td>
+            </tr>
+            <tr>
+              <td>けん さん わ だいがくせい です。</td>
+              <td></td>
+              <td><i>Ken-san wa daigakusei desu.</i></td>
+              <td>Ken is a university student.</td>
+            </tr>
+            <tr>
+              <td>こうこうせい</td>
+              <td>高校生</td>
+              <td><i>koukousei</i></td>
+              <td>a high school student</td>
+            </tr>
+            <tr>
+              <td>だいがくせい</td>
+              <td>大学生</td>
+              <td><i>daigakusei</i></td>
+              <td>university student</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 3.3 question sentences
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>hiragana</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>おなまえ わ？</td>
+              <td><i>Onamae wa?</i></td>
+              <td>What is your name?</td>
+            </tr>
+            <tr>
+              <td>やまなか さん わ せんせい です か。</td>
+              <td><i>Yamanaka-san wa sensei desu ka.</i></td>
+              <td>Is Yamanaka-san a teacher?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 3.4 answering questions
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>hiragana</th>
+              <th><i>romanised</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>はい</td>
+              <td><i>hai</i></td>
+              <td>yes</td>
+            </tr>
+            <tr>
+              <td>はい、 がくせい です。</td>
+              <td><i>Hai, gakusei desu.</i></td>
+              <td>Yes, I am a student.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            japanese: elementary a1 - 3.6 hiragana: ka ki ku ke ko
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th>hiragana</th>
+              <th><i>romanised</i></th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td>か</td>
+              <td><i>ka</i></td>
+            </tr>
+            <tr>
+              <td>き</td>
+              <td><i>ki</i></td>
+            </tr>
+            <tr>
+              <td>く</td>
+              <td><i>ku</i></td>
+            </tr>
+            <tr>
+              <td>け</td>
+              <td><i>ke</i></td>
+            </tr>
+            <tr>
+              <td>こ</td>
+              <td><i>ko</i></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            french: elementary a3 - 2.3 the comparative
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>french</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Ahmed est aussi drôle que mon frère.</i></td>
+              <td>que mon frère.</td>
+            </tr>
+            <tr>
+              <td><i>Ahmed et Marc sont moins lourde que Béa.</i></td>
+              <td>Ahmed and Marc are less irritating than Béa.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis aussi patiente que Béa.</i></td>
+              <td>I am as patient as Béa.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis moins bavarde que ma mère.</i></td>
+              <td>I am less talkative than my mother.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis plus bavarde que mon frère.</i></td>
+              <td>I am more talkative than my brother.</td>
+            </tr>
+            <tr>
+              <td><i>Marc est plus maladroit que Lucie.</i></td>
+              <td>Marc is more clumsy than Lucie.</td>
+            </tr>
+            <tr>
+              <td><i>Mon frère est moins bavard que Lucie.</i></td>
+              <td>My brother is less chatty than Lucie.</td>
+            </tr>
+            <tr>
+              <td><i>Nous sommes aussi brillants que Marc.</i></td>
+              <td>We are as smart as Marc.</td>
+            </tr>
+            <tr>
+              <td><i>Pierre est plus généreux que Thomas.</i></td>
+              <td>Pierre is more generous than Thomas.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            french: elementary a3 - 2.4 developing fluency
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>french</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Elles sont aussi généreuses que leurs parents.</i></td>
+              <td>They are as generous as their parents.</td>
+            </tr>
+            <tr>
+              <td><i>Il est nerveux.</i></td>
+              <td>He is nervous.</td>
+            </tr>
+            <tr>
+              <td><i>Je suis plus paresseuse que mon amie.</i></td>
+              <td>I am lazier than my friend.</td>
+            </tr>
+            <tr>
+              <td><i>Mais il est moins nerveux que son frère.</i></td>
+              <td>But he is less nervous than his brother.</td>
+            </tr>
+            <tr>
+              <td><i>Mais mon père est plus patient que moi.</i></td>
+              <td>But my father is more patient than me.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            german: elementary a2 - 2.3 learning past participles of common verbs
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>german</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>eingekauft</i></td>
+              <td>bought groceries</td>
+            </tr>
+            <tr>
+              <td><i>gearbeitet</i></td>
+              <td>worked</td>
+            </tr>
+            <tr>
+              <td><i>gekauft</i></td>
+              <td>bought</td>
+            </tr>
+            <tr>
+              <td><i>Ich habe heute lang gearbeitet.</i></td>
+              <td>I have worked long hours today.</td>
+            </tr>
+            <tr>
+              <td><i>kennengelernt</i></td>
+              <td>got to know / met</td>
+            </tr>
+            <tr>
+              <td><i>Manuel hat heute eingekauft.</i></td>
+              <td>Manuel did the shopping today.</td>
+            </tr>
+            <tr>
+              <td><i>Sie hat einen Pulli gekauft.</i></td>
+              <td>She bought a jumper.</td>
+            </tr>
+            <tr>
+              <td><i>Wir haben uns an der Universität kennengelernt.</i></td>
+              <td>We met at university.</td>
+            </tr>
+            <tr>
+              <td><i>Wir haben uns in der Arbeit kennengelernt.</i></td>
+              <td>We got to know each other at work.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table-fixed text-[--green1] border-separate border-spacing-4">
+          <caption class="caption-top exo pt-8">
+            german: elementary a2 - 2.4 developing fluency
+          </caption>
+          <thead class="exo">
+            <tr>
+              <th><i>german</i></th>
+              <th>english</th>
+            </tr>
+          </thead>
+          <tbody class="fustat">
+            <tr>
+              <td><i>Ich habe Deutsch gelernt.</i></td>
+              <td>I studied German.</td>
+            </tr>
+            <tr>
+              <td><i>Ich habe gestern Vokabeln gelernt.</i></td>
+              <td>I studied vocabulary yesterday.</td>
+            </tr>
+            <tr>
+              <td><i>Ich habe viel Sport gemacht.</i></td>
+              <td>I did a lot of sport.</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- footer -->
+  <footer class="mt-5 bg-[--green2]">
+    <div class="flex items-center justify-between m-5" >
+      <div class="flex items-center gap-4">
+        <h3 class="exo text-[--light1] text-2xl md:text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+      </div>
+      <div class="relative flex flex-col">
+        <button @click="darkMode = !darkMode" class="text-base fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
+          toggle theme
+        </button>
+      </div>
+    </div>
+    <hr class="border-[--light2] mr-5 ml-5">
+    <div class="place-items-center p-5 text-base fustat md:gap-5 md:flex md:justify-center text-[--light1]">
+      <p>© 2025 Imogen Dicen. All rights reserved.</p>
+      <p class="hidden md:visible">•</p>
+      <p>Built with Tailwind, and Alpine.js.</p>
+      <p class="hidden md:visible">•</p>
+      <p>Last updated June 9 ‘25.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
