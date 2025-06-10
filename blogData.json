@@ -1,5 +1,12 @@
 [
     {
+        "img": "imgs/0609/",
+        "date": "jun 9",
+        "preview": "ich habe nicht so viel gemacht",
+        "tags": ["frontend", "languages", "linkedin", "portfolio"],
+        "link": "0609.html"
+    },
+    {
         "img": "imgs/0608/1.png",
         "date": "jun 8",
         "preview": "search functionality, mobile responsiveness, and daily quests",
