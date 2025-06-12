@@ -1,10 +1,17 @@
 [
     {
-        "img": "imgs/0610/",
+        "img": "imgs/0611/",
+        "date": "jun 11",
+        "preview": "wrestling with my planner mindset",
+        "tags": ["frontend", "languages"],
+        "link": "0611.html"
+    },
+    {
+        "img": "imgs/0610/2.jpg",
         "date": "jun 10",
-        "preview": "",
+        "preview": "just a chill day",
         "tags": ["art", "frontend", "languages"],
-        "link": "06010.html"
+        "link": "0610.html"
     },
     {
         "img": "imgs/0609/2.png",

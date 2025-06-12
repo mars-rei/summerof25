@@ -14,6 +14,9 @@ module.exports = {
     './0604.html',
     './0605.html',
     './0607.html',
+    './0608.html',
+    './0609.html',
+    './0610.html',
   ], 
   theme: {
     extend: {
