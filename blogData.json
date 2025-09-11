@@ -1,9 +1,16 @@
 [   
     {
         "img": "",
+        "date": "jun 14",
+        "preview": "",
+        "tags": ["languages", "research"],
+        "link": "0614.html"
+    },
+    {
+        "img": "",
         "date": "jun 13",
         "preview": "",
-        "tags": ["languages"],
+        "tags": ["languages", "research"],
         "link": "0613.html"
     },
     {
