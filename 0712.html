@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/main.css" rel="stylesheet" />
 
-  <title>10th jul '25</title>
+  <title>12th jul '25</title>
 
   <!-- tailwind core (need to remove after build is fixed) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -168,7 +168,7 @@
 
   <!-- heading -->
   <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
-    july 10
+    july 12
   </div>
   <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
     
@@ -194,7 +194,7 @@
             </li>
             <hr class="border-[--light2] ml-8">
             <li class="flex items-start gap-2">
-              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
               <span class="flex">finish datacamp course 32</span>
             </li>
             <hr class="border-[--light2] ml-8">
@@ -291,18 +291,13 @@
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 30, chapter 4</span>
+            <span class="flex">finish datacamp course 32, chapter 3</span>
           </li>      
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 32, chapter 1</span>
-          </li>  
-          <hr class="border-[--light2] ml-8">
-          <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 32, chapter 2</span>
-          </li>    
+            <span class="flex">finish datacamp course 32, chapter 4</span>
+          </li>     
         </ul> 
       </div>
     
@@ -321,172 +316,95 @@
       <div class="bg-[--light1] rounded-lg p-4">
 
         <!-- section 1 -->
-        <p class="exo text-lg text-[--green2] pb-2 pt-8">more datacamp</p>
+        <p class="exo text-lg text-[--green2] pb-2 pt-8">datacamp</p>
 
         <p class="fustat text-1xl text-[--green1] py-2">
-          here are my notes on the first 3 chapters of the datacamp courses i did today (a continuation of experimental
-          design in python and supervised learning with scikit-learn):
+          here are my notes on the first 3 chapters of the datacamp courses i did today (a continuation of supervised learning with scikit-learn):
         </p>
 
         <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          <b>chapter 4: advanced insights from experimental complexity</b>
+          <b>chapter 3: fine-tuning your model </b>
         </p>
         <ul class="list-disc fustat text-1xl text-[--green1]">
           <li class="ml-4">
-            addressing complexities in experimental data
+            how good is your model?
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                heteroscedasticity - changing variability of a variable across the range of another variable
+                confusion matrix for assessing classification performance
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    actual:, predicted:
+                  </li>
+                  <li class="ml-4">
+                    :legitimate, :fraudulent 
+                  </li>
+                  <li class="ml-4">
+                    true negative (top left actual:legitimate & predicted:legitimate), false positive, false negative, true positive (bottom right - actual:fraudulent & predicted:fraudulent)
+                  </li>
+                </ul>
+              </li>
+              <li class="ml-4">
+                precision - metric which is the number of true positives divided by sum of all positive predictions
+              </li>
+              <li class="ml-4">
+                recall - number of true positive divided by sum of true positives and false negatives (also called sensitivity - correct predictions of most fraudulent transactions)
+              </li>
+              <li class="ml-4">
+                f1 score - mean of precision and recall
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    2 * (precision * recall / precision + recall)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="ml-4 mt-4">
+            logistic regression and the roc curve
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                logistic regression - used for classification problems, and outputting probabilities (produces a linear decision boundary (straight line if 2d))
+              </li>
+              <li class="ml-4">
+                default threshold of logistic regression = 0.5
+              </li>
+              <li class="ml-4">
+                roc curve (receiver operating characteristic curve) - helps visualise different threshold effecting true positive and false positive rates
               </li>
             </ul>
           </li>
         </ul>
 
         <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          <b>chapter 1: classification</b>
+          <b>chapter 4: preprocessing and pipelines</b>
         </p>
         <ul class="list-disc fustat text-1xl text-[--green1]">
           <li class="ml-4">
-            machine learning with scikit-learn
+            preprocessing data
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                machine learning - the process in which computers learn to make decisions from data without being explicitly programmed
+                using scikit-learn has requirements
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    numeric data
+                  </li>
+                  <li class="ml-4">
+                    no missing values
+                  </li>
+                </ul>
               </li>
               <li class="ml-4">
-                unsupervised learning - the uncovering of hidden patterns from unlabelled data
-              </li>
-              <li class="ml-4">
-                supervised learning - a type of machine learning in which the predicted values are known and the model is built to accurately predict values of previously unseen data
+                we may have to preprocess data using categorical values into numeric values to allow us to use scikit-learn with our data
               </li>
             </ul>
           </li>
 
           <li class="ml-4 pt-4">
-            the classification challenge
+            handling missing data
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                the 4 steps of classifying labels of unseen data:
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    building a model
-                  </li>
-                  <li class="ml-4">
-                    have the model learn from labelled data we pass to it
-                  </li>
-                  <li class="ml-4">
-                    pass unlabelled data to the model as input
-                  </li>
-                  <li class="ml-4">
-                    model predicts labels of the unseen data
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                labelled data = training data
-              </li>
-              <li class="ml-4">
-                k-nearest neighbours algorithm - used to predict the label of any data point by looking at the k closest labelled data points, and by taking a majority vote
-              </li>
-            </ul>
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                measuring model performance
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    accuracy - correct predictions / total observations
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-
-          <li class="ml-4 pt-4">
-            covariate adjustment in experimental design
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                covariates - variables that are related to the outcome variable and can influence its analysis
-              </li>
-              <li class="ml-4">
-                can help in reducing confounding
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          <b>chapter 2: regression</b>
-        </p>
-        <ul class="list-disc fustat text-1xl text-[--green1]">
-          <li class="ml-4">
-            introduction to regression
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                (another type of supervised learning) in regression, target variable typically has continuous values
-              </li>
-            </ul>
-          </li>
-
-          <li class="ml-4 mt-4">
-            the basics of linear regression
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                y=ax+b
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    where y is the target
-                  </li>
-                  <li class="ml-4">
-                    x is the single feature in simple linear regression
-                  </li>
-                  <li class="ml-4">
-                    a and b are prarmeters or the coefficients of the model (slope and intercept)
-                  </li>
-                </ul>
-              </li>
-              <li class="ml-4">
-                when adding more features: y= a1x1 + a2x2 + …. anxn + b
-              </li>
-            </ul>
-          </li>
-
-          <li class="ml-4 mt-4">
-            cross-validation 
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                steps of k-fold cross-validation:
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    split dataset into groups / folds
-                  </li>
-                  <li class="ml-4">
-                    set aside first fold as test set
-                  </li>
-                  <li class="ml-4">
-                    fit model on remaining folds
-                  </li>
-                  <li class="ml-4">
-                    predict on test set
-                  </li>
-                  <li class="ml-4">
-                    computer metric of interest
-                  </li>
-                  <li class="ml-4">
-                    repeat with the next folds
-                  </li>
-                </ul>
-              </li>
-              <li class="ml-4">
-                regularised regression
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    regularisation is used to avoid overfitting in regression
-                  </li>
-                  <li class="ml-4">
-                    penalises large coefficients
-                  </li>
-                </ul>
+                imputation - replace missing data with educated guesses
               </li>
             </ul>
           </li>
