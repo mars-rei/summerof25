@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/main.css" rel="stylesheet" />
 
-  <title>13th aug '25</title>
+  <title>14th aug '25</title>
 
   <!-- tailwind core (need to remove after build is fixed) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -168,7 +168,7 @@
 
   <!-- heading -->
   <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
-    august 13
+    august 14
   </div>
   <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
     
@@ -291,12 +291,12 @@
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 36, chapter 1</span>
+            <span class="flex">finish datacamp course 34, chapter 3</span>
           </li>  
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 36, chapter 2</span>
+            <span class="flex">finish datacamp course 34, chapter 4</span>
           </li>  
         </ul> 
       </div>
@@ -319,38 +319,71 @@
         <p class="exo text-lg text-[--green2] pb-2 pt-8">datacamp studies</p>
 
         <p class="fustat text-1xl text-[--green1] py-2">
-          <b>chapter 1: classification and regression trees</b>
+          <b>chapter 3: decorrelating your data and dimension reduction</b>
         </p>
         <ul class="list-disc fustat text-1xl text-[--green1]">
           <li class="ml-4">
-            decision tree for classification
+            visualising the pca transformation
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                they learn a sequence of if-else questions about features in order to infer labels
+                dimension reduction removes less-informative features and finds patterns in data to use patterns to re-express it in a compressed form
               </li>
               <li class="ml-4">
-                captures non-linear relationships between features and labels
+                pca (principal component analysis) - two steps of dimesnion reduction technique
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    decorrelation
+                  </li>
+                  <li class="ml-4">
+                    reduces dimension
+                  </li>
+                </ul>
               </li>
               <li class="ml-4">
-                decision region - region in feature space where all instances are assigned to one class label
+                intrinsic dimension
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    the number of features needed to approximate a dataset
+                  </li>
+                  <li class="ml-4">
+                    let’s us know how much a dataset can be compressed
+                  </li>
+                  <li class="ml-4">
+                    can be identified by pca
+                  </li>
+                </ul>
               </li>
               <li class="ml-4">
-                decision boundary - surface separating decision regions
+                dimension reduction with pca
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    pca features are in decreasing order of variance
+                  </li>
+                  <li class="ml-4">
+                    must specify how many features to keep
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
+        </ul>
 
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          <b>chapter 4: discovering interpretable features</b>
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
           <li class="ml-4">
-            classification tree learning
+            non-negative matrix factorisation (nmf)
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                decision-tree - data structure consisting of a hierarchy of nodes (just like a normal tree)
+                a dimension reduction technique
               </li>
               <li class="ml-4">
-                a node in a decision-tree is either a question or a prediction
+                easy to interpret
               </li>
               <li class="ml-4">
-                a leaf node is a prediction - all other nodes that are not leaf nodes are questions
+                can only be implemented on a dataset that have sample features that are non-negative
               </li>
             </ul>
           </li>
@@ -361,21 +394,17 @@
         <p class="exo text-lg text-[--green2] pb-2 pt-8">language trilogy</p>
 
         <p class="fustat text-1xl text-[--green1] py-2">
-          started my maru hiragana drills at 18.23 and finished them in 3 minutes
+          started my maru hiragana drills at 14.08 and finished them in 3 minutes
         </p>
 
         <p class="fustat text-1xl text-[--green1] py-2 pt-4">
-          18.57 - finished chapter 8 japanese busuu
+          14.22 - finished half of chapter 4 busuu german
         </p>
         <p class="fustat text-1xl text-[--green1] py-2">
-          19.12 - finished half of chapter 4 french busuu
+          14.48 - finished half of chapter 4 busuu french
         </p>
         <p class="fustat text-1xl text-[--green1] py-2">
-          19.23 - finished half of chapter 4 german busuu
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-4">
-          was too tuckered out to do the frontend coding, maybe tomorrow
+          15.55 - finished chapter 9 busuu japanese
         </p>
       </div>
     </div>
