@@ -1,0 +1,469 @@
+<!doctype html>
+  
+<html
+  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
+  x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+  x-bind:class="{ 'dark': darkMode }"
+>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./css/main.css" rel="stylesheet" />
+
+  <title>12th aug '25</title>
+
+  <!-- tailwind core (need to remove after build is fixed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- apline core -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- alpine plugins -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- exo 2 font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- fustat font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&display=swap" rel="stylesheet">
+
+  <!-- kdam thmor pro font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+
+  <!-- jersey 25 font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-[--light2] flex flex-col min-h-screen">
+
+  <header class="bg-[--light1]">
+    <nav x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false" class="flex items-center justify-between gap-4 px-6 py-4" aria-label="penguin ui menu">
+      <div class="flex items-center gap-4">
+        <!-- desktop menu -->
+        <ul class="text-[--dark2] hidden items-center gap-4 shrink-0 sm:flex exo text-3xl" id="headerLinks">
+          <li class="text-[--green2]"><a href="index.html">home</a></li>
+          <li>|</li>
+          <li><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4">project portfolio</a></li>
+          <li>|</li>
+          <li><a href="https://www.linkedin.com/in/imogen-dicen/">linkedin</a></li>
+          <li>|</li>
+          <li><a href="https://github.com/mars-rei">github</a></li>
+        </ul>
+
+        <!-- mobile menu button -->
+        <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen" x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button" class="flex sm:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
+          <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" class="size-6 stroke-[--green2]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- mobile menu -->
+        <ul x-cloak x-show="mobileMenuIsOpen" x-transition:enter="transition motion-reduce:transition-none ease-out duration-300" x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition motion-reduce:transition-none ease-out duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col px-8 pb-6 pt-10 exo text-[--green2] sm:hidden bg-[--light1]">
+          <li class="p-2"><a href="index.html" class="w-full text-lg font-bold focus:underline text-[--green1]" aria-current="page">home</a></li>
+          <li class="p-2"><a href="https://reminiscent-flannel-fe7.notion.site/my-projects-0cd061a938b0467d98cb56019a970f6d?pvs=4" class="w-full text-lg font-medium focus:underline">project portfolio</a></li>
+          <li class="p-2"><a href="https://www.linkedin.com/in/imogen-dicen/" class="w-full text-lg font-medium focus:underline">linkedin</a></li>
+          <li class="p-2"><a href="https://github.com/mars-rei" class="w-full text-lg font-medium focus:underline">github</a></li>
+        </ul>
+      </div>
+
+      <!-- search bar -->
+      <div x-data="getBlogEntries()" class="relative">
+          <div class="relative w-full max-w-64 flex flex-col py-2 border-2 fustat border-[--light2] bg-[--light1] rounded-full">
+              <input 
+                  type="text" 
+                  name="query" 
+                  @focus="show = true"
+                  @blur="hideResults()"
+                  x-ref="searchInput" 
+                  x-model="search" 
+                  x-on:keydown.window.prevent.slash="$refs.searchInput.focus()"
+                  placeholder="search" 
+                  class="placeholder-[--green2] ml-5 focus:outline-none text-[--green2]"
+              />
+          </div>
+          
+          <div 
+            x-show="show" 
+            @mousedown.prevent
+            class="absolute top-full right-0 w-full max-w-64 mt-1 z-50"
+          >
+              <template x-for="blog in filteredBlogEntries" :key="blog.date">
+                  <div 
+                      x-transition
+                      class="bg-[--light1] p-2 max-w-64 rounded-md hover:bg-[--green2]"
+                  >
+                      <a :href="blog.link" @mousedown.prevent>
+                          <p class="exo text-base text-[--dark2]" x-text="blog.date"></p>
+                          <p class="fustat text-sm text-[--dark1]" x-text="blog.preview"></p>
+                      </a>
+                  </div>
+              </template>
+          </div>
+      </div>
+
+      <script>
+        function getBlogEntries() {
+          return {
+            search: '',
+            show: false,
+
+            hideResults() {
+                setTimeout(() => { this.show = false }, 200);
+            },
+
+            allData: [], 
+            loading: true, 
+            
+            init() {
+                fetch('blogData.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('the network response was not ok.');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.allData = data;
+                    });
+            },
+
+            get filteredBlogEntries() {
+              if (this.search === '') {
+                return [];
+              }
+              return this.allData.filter((blogEntry) => {
+                return (blogEntry.date
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.preview
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())) ||
+                                  (blogEntry.tags.some(tag => tag
+                  .replace(/ /g, '')
+                  .toLowerCase()
+                  .includes(this.search.replace(/ /g, '').toLowerCase())));
+              });
+            }
+          };
+        }
+      </script>
+
+    </nav>
+  </header>
+
+
+  <!-- heading -->
+  <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
+    august 12
+  </div>
+  <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
+    
+  </div>
+
+  <!-- main body -->
+
+  <!-- divider  -->
+  <div class="bg-[--light1] py-8"></div>
+
+  <div class="grid grid-cols-4 grid-rows-1">
+    <div class="col-span-4 md:col-span-1 px-4">
+      <!-- left side -->
+
+      <!-- weekly checklist -->
+      <div class="hidden md:block my-10">
+        <p class="exo text-4xl text-[--dark1] my-4">this week's goals</p>
+        <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+          <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
+              <span class="flex">finish styling the breakpoints for the spotify themed portfolio</span>
+            </li>
+            <hr class="border-[--light2] ml-8">
+            <li class="flex items-start gap-2">
+              <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
+              <span class="flex">finish current datacamp track</span>
+            </li>
+          </ul> 
+        </div>
+      </div>
+
+      <!-- small countdown -->
+      <div class="hidden md:block py-4 pb-8">
+        <div class="flex justify-center">
+          <div
+            x-data="{
+            endDate: new Date('2025-09-21T23:59:59').getTime(),
+            remainingTime: 0,
+            formatTime(time) {
+              const days = Math.floor(time / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+              const seconds = Math.floor((time % (1000 * 60)) / 1000);
+              return { days, hours, minutes, seconds };
+            }
+          }"
+            x-init="() => {
+            setInterval(() => {
+              const now = new Date().getTime();
+              const remainingTime = endDate - now;
+              $data.remainingTime = remainingTime > 0 ? remainingTime : 0;
+            }, 1000);
+          }" class="text-center">
+            <template x-if="remainingTime > 0">
+              <div>
+                <div class="flex flex-row items-center gap-5">
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">days</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).days">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">hours</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).hours">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">mins</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).minutes">
+                    </div>
+                  </div>
+                  <div>
+                    <div class="jersey text-2xl mb-5 text-[--green2]">secs</div>
+                    <div class="ktp text-5xl text-[--dark1]"
+                      x-text="formatTime(remainingTime).seconds">
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-[--dark2] jersey text-2xl mt-5">'TIL FINAL YEAR OF UNI</p>
+                </div>
+              </div>
+            </template>
+            <template x-if="remainingTime <= 0">
+              <div>
+                <div class="exo text-4xl text-[--dark1]">the summer of '25 has come to an end.</div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+      
+      <!-- checklist -->
+      <div class="my-4 txt-gray-800 bg-[--light1] rounded-xl p-4">
+        <p class="exo text-2xl text-[--dark1] mb-2">today's checklist</p>
+        <ul class="text-[--dark2] items-left shrink-0 sm:flex fustat text-1xl flex flex-col gap-2">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">2 rounds of maru hiragana</span>
+          </li>      
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">busuu japanese</span>
+          </li>  
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">busuu french</span>
+          </li> 
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">busuu german</span>
+          </li>  
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">finish datacamp course 34, chapter 1</span>
+          </li>  
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
+            <span class="flex">finish datacamp course 34, chapter 2</span>
+          </li>  
+          <hr class="border-[--light2] ml-8">
+          <li class="flex items-start gap-2">
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
+            <span class="flex">finish tablet and desktop breakpoints of spotify themed portfolio</span>
+          </li>  
+        </ul> 
+      </div>
+    
+      <!-- tags -->
+      <div class="hidden md:block my-4 ml-4">
+        <p class="exo text-2xl text-[--dark1] my-4">tags</p>
+        <ul class="items-left shrink-0 sm:flex fustat text-1xl flex flex-wrap gap-4 text-[--green2] rounded-lg">
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">backend</p></li>
+          <li><p class="bg-[--light1] rounded-full px-4 py-1">languages</p></li>
+        </ul>    
+      </div>
+    </div>
+
+    <div class="col-span-4 md:col-span-3 ml-5 md:ml-10 mr-5 mt-5">
+      <!-- blog content -->
+      <div class="bg-[--light1] rounded-lg p-4">
+
+        <!-- section 1 -->
+        <p class="exo text-lg text-[--green2] pb-2 pt-8">datacamp studies</p>
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          <b>chapter 1: unsupervised learning</b>
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
+          <li class="ml-4">
+            unsupervised learning
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                a class of machine learning techniques used to discover patterns in data
+              </li>
+              <li class="ml-4">
+                opposite of supervised learning which is finding patterns for a prediction task
+              </li>
+              <li class="ml-4">
+                finds patterns in data without a specific prediction task in mind
+              </li>
+              <li class="ml-4">
+                k-means clustering
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    finds clusters of samples (number of clusters should be specified)
+                  </li>
+                  <li class="ml-4">
+                    implemented in scikit-learn
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li class="ml-4">
+            evaluating a clustering
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                measures the quality of a clustering
+              </li>
+              <li class="ml-4">
+                inertia measures clustering quality - how spread out the clusters are (lower is better)
+                <ul class="list-disc fustat text-1xl text-[--green1]">
+                  <li class="ml-4">
+                    it looks at the distance from each sample to the centroid of its cluster
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
+          <b>chapter 2: visualisation with hierarchical clustering and t-SNE</b>
+        </p>
+        <ul class="list-disc fustat text-1xl text-[--green1]">
+          <li class="ml-4">
+            visualising hierarchies
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                hierarchical clustering is when groups of things form a hierarchy and these clusters are contained in one another
+              </li>
+            </ul>
+          </li>
+
+          <li class="ml-4">
+            cluster labels in hierarchical clustering
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                the height on a dendrogram shows the distance between merging clusters
+              </li>
+              <li class="ml-4">
+                a ‘linkage method’ defines distance between clusters
+              </li>
+            </ul>
+          </li>
+
+          <li class="ml-4">
+            t-SNE for 2-dimensional maps
+            <ul class="list-disc fustat text-1xl text-[--green1]">
+              <li class="ml-4">
+                stands for t-distributed stochastic neighbour embedding
+              </li>
+              <li class="ml-4">
+                maps samples to 2d space or even 3d space
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+
+        <!-- section 2 -->
+        <p class="exo text-lg text-[--green2] pb-2 pt-8">back on the language grind</p>
+
+        <p class="fustat text-1xl text-[--green1] py-2">
+          decided to ditch the anki flashcards for now as they take a while (still useful though)
+        </p>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-4">
+          started my maru hiragana drills at 13.05 and finished them in 4 minutes
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          the app started throwing in the last section of hiragana characters (yuouon) and
+          it feels god to know that i didn't struggle with identifying them (all correct!!)
+        </p>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-4">
+          started busuu japanese chapter 7 at 14.30 and finished at 15.07
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          continued on chapter 3 busuu german at 15.10 and finished 15.22
+        </p>
+        <p class="fustat text-1xl text-[--green1] py-2">
+          continued on chapter 3 busuu french at 15.27 and finished at 15.45
+        </p>
+
+        <p class="fustat text-1xl text-[--green1] py-2 pt-4">
+          was too tuckered out to do the frontend coding, maybe tomorrow
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- footer -->
+  <footer class="mt-5 bg-[--green2]">
+    <div class="flex items-center justify-between m-5" >
+      <div class="flex items-center gap-4">
+        <h3 class="exo text-[--light1] text-2xl md:text-3xl" id="footerTitle">MARSY'S SUMMER OF '25</h3>
+      </div>
+      <div class="relative flex flex-col">
+        <button @click="darkMode = !darkMode" class="text-base fustat bg-[--light1] text-[--green2] p-2 pr-5 pl-5 rounded-lg">
+          toggle theme
+        </button>
+      </div>
+    </div>
+    <hr class="border-[--light2] mr-5 ml-5">
+    <div class="place-items-center p-5 text-base fustat md:gap-5 md:flex md:justify-center text-[--light1]">
+      <p>© 2025 Imogen Dicen. All rights reserved.</p>
+      <p class="hidden md:visible">•</p>
+      <p>Built with Tailwind, and Alpine.js.</p>
+      <p class="hidden md:visible">•</p>
+      <p>Last updated September 17 ‘25.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
