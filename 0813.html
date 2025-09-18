@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="./css/main.css" rel="stylesheet" />
 
-  <title>12th aug '25</title>
+  <title>13th aug '25</title>
 
   <!-- tailwind core (need to remove after build is fixed) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -168,7 +168,7 @@
 
   <!-- heading -->
   <div class="ktp text-5xl md:text-7xl text-[--dark1] px-4 mt-16 mx-10 flex justify-center">
-    august 12
+    august 13
   </div>
   <div class="text-[--dark2] jersey text-2xl md:text-4xl mt-10 mb-10 mx-4 md:mx-0 flex justify-center">
     
@@ -291,17 +291,12 @@
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 34, chapter 1</span>
+            <span class="flex">finish datacamp course 36, chapter 1</span>
           </li>  
           <hr class="border-[--light2] ml-8">
           <li class="flex items-start gap-2">
             <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md">✔</span>
-            <span class="flex">finish datacamp course 34, chapter 2</span>
-          </li>  
-          <hr class="border-[--light2] ml-8">
-          <li class="flex items-start gap-2">
-            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center border-2 border-[--light2] text-[--light2] rounded-md"></span>
-            <span class="flex">finish tablet and desktop breakpoints of spotify themed portfolio</span>
+            <span class="flex">finish datacamp course 36, chapter 2</span>
           </li>  
         </ul> 
       </div>
@@ -324,87 +319,38 @@
         <p class="exo text-lg text-[--green2] pb-2 pt-8">datacamp studies</p>
 
         <p class="fustat text-1xl text-[--green1] py-2">
-          <b>chapter 1: unsupervised learning</b>
+          <b>chapter 1: classification and regression trees</b>
         </p>
         <ul class="list-disc fustat text-1xl text-[--green1]">
           <li class="ml-4">
-            unsupervised learning
+            decision tree for classification
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                a class of machine learning techniques used to discover patterns in data
+                they learn a sequence of if-else questions about features in order to infer labels
               </li>
               <li class="ml-4">
-                opposite of supervised learning which is finding patterns for a prediction task
+                captures non-linear relationships between features and labels
               </li>
               <li class="ml-4">
-                finds patterns in data without a specific prediction task in mind
+                decision region - region in feature space where all instances are assigned to one class label
               </li>
               <li class="ml-4">
-                k-means clustering
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    finds clusters of samples (number of clusters should be specified)
-                  </li>
-                  <li class="ml-4">
-                    implemented in scikit-learn
-                  </li>
-                </ul>
+                decision boundary - surface separating decision regions
               </li>
             </ul>
           </li>
 
           <li class="ml-4">
-            evaluating a clustering
+            classification tree learning
             <ul class="list-disc fustat text-1xl text-[--green1]">
               <li class="ml-4">
-                measures the quality of a clustering
+                decision-tree - data structure consisting of a hierarchy of nodes (just like a normal tree)
               </li>
               <li class="ml-4">
-                inertia measures clustering quality - how spread out the clusters are (lower is better)
-                <ul class="list-disc fustat text-1xl text-[--green1]">
-                  <li class="ml-4">
-                    it looks at the distance from each sample to the centroid of its cluster
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-8">
-          <b>chapter 2: visualisation with hierarchical clustering and t-SNE</b>
-        </p>
-        <ul class="list-disc fustat text-1xl text-[--green1]">
-          <li class="ml-4">
-            visualising hierarchies
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                hierarchical clustering is when groups of things form a hierarchy and these clusters are contained in one another
-              </li>
-            </ul>
-          </li>
-
-          <li class="ml-4">
-            cluster labels in hierarchical clustering
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                the height on a dendrogram shows the distance between merging clusters
+                a node in a decision-tree is either a question or a prediction
               </li>
               <li class="ml-4">
-                a ‘linkage method’ defines distance between clusters
-              </li>
-            </ul>
-          </li>
-
-          <li class="ml-4">
-            t-SNE for 2-dimensional maps
-            <ul class="list-disc fustat text-1xl text-[--green1]">
-              <li class="ml-4">
-                stands for t-distributed stochastic neighbour embedding
-              </li>
-              <li class="ml-4">
-                maps samples to 2d space or even 3d space
+                a leaf node is a prediction - all other nodes that are not leaf nodes are questions
               </li>
             </ul>
           </li>
@@ -412,28 +358,20 @@
 
 
         <!-- section 2 -->
-        <p class="exo text-lg text-[--green2] pb-2 pt-8">back on the language grind</p>
+        <p class="exo text-lg text-[--green2] pb-2 pt-8">language trilogy</p>
 
         <p class="fustat text-1xl text-[--green1] py-2">
-          decided to ditch the anki flashcards for now as they take a while (still useful though)
-        </p>
-
-        <p class="fustat text-1xl text-[--green1] py-2 pt-4">
-          started my maru hiragana drills at 13.05 and finished them in 4 minutes
-        </p>
-        <p class="fustat text-1xl text-[--green1] py-2">
-          the app started throwing in the last section of hiragana characters (yuouon) and
-          it feels god to know that i didn't struggle with identifying them (all correct!!)
+          started my maru hiragana drills at 18.23 and finished them in 3 minutes
         </p>
 
         <p class="fustat text-1xl text-[--green1] py-2 pt-4">
-          started busuu japanese chapter 7 at 14.30 and finished at 15.07
+          18/57 - finished chapter 8 japanese busuu
         </p>
         <p class="fustat text-1xl text-[--green1] py-2">
-          continued on chapter 3 busuu german at 15.10 and finished 15.22
+          19.12 - finished half of chapter 4 french busuu
         </p>
         <p class="fustat text-1xl text-[--green1] py-2">
-          continued on chapter 3 busuu french at 15.27 and finished at 15.45
+          19.23 - finished half of chapter 4 german busuu
         </p>
 
         <p class="fustat text-1xl text-[--green1] py-2 pt-4">
