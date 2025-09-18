@@ -1,6 +1,13 @@
 [   
     {
         "img": "",
+        "date": "aug 15",
+        "preview": "",
+        "tags": ["frontend"],
+        "link": "0815.html"
+    },
+    {
+        "img": "",
         "date": "aug 14",
         "preview": "",
         "tags": ["backend", "languages"],
