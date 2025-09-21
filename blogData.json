@@ -1,6 +1,41 @@
 [   
     {
         "img": "",
+        "date": "sep 22",
+        "preview": "a reflection",
+        "tags": [],
+        "link": "0922.html"
+    },
+    {
+        "img": "",
+        "date": "sep 21",
+        "preview": "",
+        "tags": ["frontend", "languages"],
+        "link": "0921.html"
+    },
+    {
+        "img": "",
+        "date": "sep 20",
+        "preview": "",
+        "tags": ["frontend", "languages"],
+        "link": "0920.html"
+    },
+    {
+        "img": "",
+        "date": "sep 18",
+        "preview": "",
+        "tags": ["frontend", "languages"],
+        "link": "0918.html"
+    },
+    {
+        "img": "",
+        "date": "sep 17",
+        "preview": "",
+        "tags": ["frontend", "languages"],
+        "link": "0917.html"
+    },
+    {
+        "img": "",
         "date": "sep 15",
         "preview": "",
         "tags": ["frontend", "languages"],
